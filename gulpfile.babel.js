@@ -59,10 +59,6 @@ export function qnorrSass() {
         'android >= 4.4'
       ]
     }))
-    .pipe($.if(productionEnv,$.cleanCss({
-    	level: 2
-	  })))
-	  .pipe($.rename({ suffix: '.min' }))
     .pipe($.if(productionEnv, $.size({title:  $.util.colors.bgRed('[SIZE] Styles: ')})))
     .pipe($.if(!productionEnv, $.sourcemaps.write({
       includeContent: true,
@@ -72,6 +68,14 @@ export function qnorrSass() {
     .pipe(browserSync.reload({stream: true}))
 }
 
+
+export function qnorrMinify(){
+	 return gulp.src(paths.build + 'qnorr.css')
+	    .pipe($.mergeMediaQueries())
+	    .pipe($.if(productionEnv,$.cleanCss()))
+		  .pipe($.rename({ suffix: '.min' }))
+	    .pipe(gulp.dest(paths.build))
+}
 export function qnorrSassGzip(){
 	 return gulp.src(paths.build + 'qnorr.min.css')
     .pipe($.gzip())
@@ -121,6 +125,7 @@ const build = gulp.series(
   gulp.parallel(
     qnorrSass
   ),
+  qnorrMinify,
   qnorrSassGzip
 );
 
