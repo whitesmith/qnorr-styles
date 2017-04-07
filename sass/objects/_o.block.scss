@@ -1,0 +1,67 @@
+/*
+   OJECTS.BLOCK
+
+   Stacked image-with-text object. A simple abstraction to cover a very commonly
+   occurring design pattern.
+
+   From Inuit CSS, made by @csswirzardry
+   https://github.com/inuitcss/inuitcss/blob/develop/objects/_objects.block.scss
+*/
+
+.o-block {
+  display: block;
+  text-align: center;
+}
+
+
+  .o-block__img {
+    margin-bottom: $qnorr-spacing-unit;
+
+
+    /* Size variants.
+       ====================================================================== */
+
+      .o-block--flush > & {
+         margin-bottom: 0;
+      }
+
+      .o-block--tiny > & {
+         margin-bottom: $qnorr-spacing-unit-tiny;
+      }
+
+      .o-block--small > & {
+         margin-bottom: $qnorr-spacing-unit-small;
+      }
+
+      .o-block--medium > & {
+         margin-bottom: $qnorr-spacing-unit-medium;
+      }
+
+      .o-block--double > & {
+         margin-bottom: $qnorr-spacing-unit-double;
+      }
+      .o-block--large > & {
+         margin-bottom: $qnorr-spacing-unit-large;
+      }
+
+  }
+
+
+  .o-block__body {
+    display: block;
+  }
+
+
+
+
+
+/* Alignment variants.
+   ========================================================================== */
+
+.o-block--right {
+  text-align: right;
+}
+
+.o-block--left {
+  text-align: left;
+}

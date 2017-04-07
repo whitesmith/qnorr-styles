@@ -1,0 +1,109 @@
+/*
+   UTITLITES.SPACING
+   ----
+
+   I could use verbose names
+   margin-top-none instead of mt-0
+
+   But they're intentend to not sound familiar since
+   utilities should be use scarcely
+
+   Anatomy:
+      .u-[propertynamespace][direction]-[size] {}
+
+   Usage:
+      <div class="u-pb-none"></div>
+      <div class="u-p-none"></div>
+      <div class="u-mb-none"></div>
+      <div class="u-mh-large"></div>
+
+* ==================================================== */
+
+
+
+/* stylelint-disable string-quotes */
+
+$u-spacers-breakpoints-list: $qnorr-grid-breakpoints-list !default;
+$u-spacers-breakpoint-separator: $qnorr-breakpoint-separator !default;
+
+$u-spacing-directions: (
+  null: null,
+  't': '-top',
+  'r': '-right',
+  'b': '-bottom',
+  'l': '-left',
+  'h': '-left' '-right',
+  'v': '-top' '-bottom',
+) !default;
+
+$u-spacing-properties: (
+  'p': 'padding',
+  'm': 'margin',
+) !default;
+
+$u-spacing-sizes: (
+  null: $qnorr-spacing-unit,
+  '-tiny': $qnorr-spacing-unit-tiny,
+  '-small': $qnorr-spacing-unit-small,
+  '-medium': $qnorr-spacing-unit-medium,
+  '-double': $qnorr-spacing-unit-double,
+  '-large': $qnorr-spacing-unit-large,
+  // '-kilo': $qnorr-spacing-unit-kilo,
+  // '-mega': $qnorr-spacing-unit-mega,
+  // '-giga': $qnorr-spacing-unit-giga,
+  '-none': 0
+) !default;
+
+
+
+
+// No responsive
+@each $property-namespace, $property in $u-spacing-properties {
+
+  @each $direction-namespace, $direction-rules in $u-spacing-directions {
+
+    @each $size-namespace, $size in $u-spacing-sizes {
+
+      .u-#{$property-namespace}#{$direction-namespace}#{$size-namespace} {
+
+        @each $direction in $direction-rules {
+          #{$property}#{$direction}: $size !important;
+        }
+
+      }
+
+    }
+
+  }
+}
+
+
+// With Responsive Suffixes
+// use uncss to remove unused properties
+@each $property-namespace, $property in $u-spacing-properties {
+
+   @each $direction-namespace, $direction-rules in $u-spacing-directions {
+
+      @each $size-namespace, $size in $u-spacing-sizes {
+
+         @each $breakpoint-name in $u-spacers-breakpoints-list {
+
+            @include mappy-bp($breakpoint-name) {
+
+               .u-#{$property-namespace}#{$direction-namespace}#{$size-namespace}#{$u-spacers-breakpoint-separator}#{$breakpoint-name} {
+
+                  @each $direction in $direction-rules {
+                     #{$property}#{$direction}: $size !important;
+                  }
+
+               }
+
+            }
+
+         }
+
+      }
+
+   }
+
+}

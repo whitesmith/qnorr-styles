@@ -1,0 +1,11 @@
+.o-section{
+   padding:{
+      top: px-to-rem($qnorr-baseline);
+      bottom: px-to-rem($qnorr-baseline);
+   }
+
+   @include mappy-bp(sm){
+      top: px-to-rem($qnorr-baseline * 2);
+      bottom: px-to-rem($qnorr-baseline * 2);
+   }
+}

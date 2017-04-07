@@ -1,0 +1,51 @@
+/*
+    OBJECTS.WRAPPER
+    ----
+
+
+   Page constraint object.
+==================================================== */
+
+$o-wrapper-sizes: $qnorr-wrapper-sizes-map;
+
+
+.o-wrapper{
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+	padding: {
+		left: px-to-rem($qnorr-baseline / 2);
+		right: px-to-rem($qnorr-baseline / 2);
+	}
+
+
+   @each $breakpoint, $gutter in $qnorr-grid-gutter-map{
+      @if $breakpoint == null {
+         padding:{
+            left: px-to-rem($gutter);
+            right: px-to-rem($gutter);
+         }
+      } @else {
+         @include mappy-bp($breakpoint){
+            padding:{
+               left: px-to-rem($gutter);
+               right: px-to-rem($gutter);
+            }
+         }
+      }
+   }
+
+	@each $breakpoint, $size in $o-wrapper-sizes{
+		@include mappy-bp($breakpoint){
+			max-width: $size;
+		}
+	}
+
+
+	&--flush{
+		padding: {
+			left: 0;
+			right: 0;
+		}
+	}
+}

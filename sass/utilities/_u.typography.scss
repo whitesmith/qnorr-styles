@@ -1,0 +1,37 @@
+/*
+    UTILITIES.TYPESCALE
+    ---
+
+* ==================================================== */
+
+
+
+
+//scale is first key, breakpoint is key of scale
+@each $scale, $breakpoint in $qnorr-typescale-maps {
+   @if type-of($breakpoint) == 'map'{
+      .u-ts-#{$scale}{
+         @include responsive-font-size($breakpoint);
+      }
+   }
+   @else if type-of($breakpoint) == 'list'{
+      .u-ts-#{$scale}{
+         font-size: px-to-rem(nth($breakpoint, 1));
+         @if (length($scale) > 1) {
+            line-height: round(strip-unit(nth($breakpoint, 2)/nth($breakpoint, 1) ));
+         }
+      }
+   }
+   @else {
+      .b-ts-#{$scale}{
+         font-size: px-to-rem($breakpoint);
+      }
+   }
+}
+
+//type weight
+@each $weight in $qnorr-font-weights {
+   .u-tw-#{$weight} { font-weight: $weight; }
+}
+
+

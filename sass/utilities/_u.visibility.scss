@@ -1,0 +1,21 @@
+/*
+   UTITLITES.VISIBILITY
+   ----
+
+   Default is mobile first, so responsive classanmes suffixes
+   are chosen from a point of propagate from mobile upwards
+
+   * In html prefer
+   * --@sm means, and sm breakpoint upwards
+* ==================================================== */
+
+$u-text-alignment-breakpoints-list: $qnorr-grid-breakpoints !default;
+
+.u-hidden { display: none; }
+
+
+@each $breakpoint in $u-text-alignment-breakpoints-list {
+   @include mappy-bp($breakpoint){
+      .u-hidden-\@#{$breakpoint} { display: none; }
+   }
+}

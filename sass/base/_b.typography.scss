@@ -1,0 +1,45 @@
+/*
+    BASE.TYPOGRAPHY
+    ----
+
+* ==================================================== */
+
+/* Use mixin to include desired font, one mixin per weight/style pair */
+
+body {
+   font-family: $system-font-family;
+   font-size: px-to-rem($qnorr-base-font-size);
+   line-height: strip-unit($qnorr-baseline/$qnorr-base-font-size);
+   font-weight: 400;
+   font-stretch: normal;
+   font-variant: normal;
+   -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+
+}
+
+
+h1, h2, h3, h4, h5, h6,
+input, button {
+	font-family: $qnorr-font-family;
+}
+
+
+code, pre {
+   font-family: $qnorr-monospace-font-family;
+}
+
+
+/*
+   All type components are created equal, by default
+==========================*/
+@for $i from 1 to 7 {
+   h#{$i} {
+      margin: 0;
+      font-size: 1em;
+      font-weight: 500;
+   }
+}
+
+

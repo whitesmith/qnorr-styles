@@ -1,0 +1,92 @@
+/*
+    OBJECTS.GRID
+    ----
+
+
+   Flexbox only.
+
+    usage:
+    <div class="o-grid">
+  		<div class="o-grid__item"></div>
+  	</div>
+
+   <div class="o-layout">
+      <div class="o-layout__item"></div>
+   </div>
+
+   auto layout by default
+
+   use ccs mixins to size or utility sizing classes like this:
+
+   <div class="o-layout">
+      <div class="o-layout__item u-w-1/12 u-col-6@sm"></div>
+   </div>
+
+	requires:
+      - unless on flexbox mode o.layout items must be complemented
+      width a size utility class ortherwise they will be stacked
+      and 100% of the parent
+
+* ==================================================== */
+
+@mixin make-grid-wrapper(){
+   position: relative;
+   display: flex;
+   flex: 0 1 auto;
+   flex-direction: row;
+   flex-wrap: wrap;
+   @each $breakpoint, $gutter in $qnorr-grid-gutter-map{
+      @if $breakpoint == null {
+         margin-left: - (px-to-rem($gutter));
+      } @else {
+         @include mappy-bp($breakpoint){
+              margin-left: - (px-to-rem($gutter));
+         }
+      }
+   }
+}
+
+@mixin make-grid-el() {
+   position: relative;
+   flex: 0 0 auto;
+   max-width: 100%;
+
+   @each $breakpoint, $gutter in $qnorr-grid-gutter-map{
+      @if $breakpoint == null {
+         padding-left: px-to-rem($gutter);
+      } @else {
+         @include mappy-bp($breakpoint){
+              padding-left: px-to-rem($gutter);
+         }
+      }
+   }
+}
+
+
+@mixin make-col($numberOfColumns: 'auto') {
+   @if ($numberOfColumns == 'auto' or $numberOfColumns == null){
+      flex-grow: 1;
+      flex-basis: 0px;
+      max-width: 100%;
+   }
+   @else {
+      flex: 0 0 percentage($numberOfColumns / $qnorr-grid-columns);
+      width: percentage($numberOfColumns / $qnorr-grid-columns);
+      max-width: percentage($numberOfColumns / $qnorr-grid-columns);
+   }
+}
+
+
+/* Class*/
+.o-grid,
+.o-layout {
+   @include make-grid-wrapper();
+}
+
+	/* GRID ITEMS */
+	.o-grid__el,
+   .o-layout__el {
+      @include make-grid-el();
+	}
+
+

@@ -1,0 +1,29 @@
+/*
+    get-color()
+    ----
+
+    retrives a color from the app-colors-maps defined at _global.scss
+    tone defaults to base, i want another, pass as second argument.
+    Plicas are optional.
+
+    Depends on:
+      map-deep-get()
+        setting.colors.scss
+
+    How to use:
+    getAppColor('primary') === getColor('primary', 'base')
+    getAppColor('primary', 'light') retrieves light variation
+*/
+
+@function get-color($color, $tone: "base") {
+    @if map-has-key($qnorr-color-maps, $color) {
+        @if (type-of(map-get($qnorr-color-maps, $color)) == 'color' )  {
+            @return map-get($qnorr-color-maps, $color);
+        } @else {
+           @return map-deep-get($qnorr-color-maps, $color, $tone); // it's a map, get tone
+        }
+    }
+    //else
+    @error "`#{$color}` is not in $qnorr-color-maps. Check _s.colors.scss";
+    @return false;
+}

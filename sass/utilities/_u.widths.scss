@@ -1,0 +1,107 @@
+/*
+    UTILITES.SIZING
+    ----
+
+   By default responsive breakpoints are based on the grid/layout breakpoints
+* ========================================================================== */
+
+
+$u-w-class-steps: 10;
+$u-w-breakpoints-list: $qnorr-grid-breakpoints-list;
+
+
+/*
+   Grid sizing classes
+   ========================================================================== */
+
+@for $i from 1 through $qnorr-grid-columns {
+   $widthCalc:  percentage($i/ $qnorr-grid-columns);
+
+   .u-w-#{$i}\/#{$qnorr-grid-columns},
+   .u-col-#{$i}{
+      @include make-col($i);
+   }
+}
+
+.u-w-auto {
+   flex-grow: 1;
+   flex-basis: 0px;
+   max-width: 100%;
+   width: auto;
+}
+
+
+//responsive grid sizing
+@each $breakpoint in $u-w-breakpoints-list{
+   @include mappy-bp($breakpoint){
+      @for $i from 1 through $qnorr-grid-columns {
+         $widthCalc:  percentage($i/ $qnorr-grid-columns);
+
+         .u-w-#{$i}\/#{$qnorr-grid-columns}#{$qnorr-breakpoint-separator}#{$breakpoint},
+         .u-col-#{$i}#{$qnorr-breakpoint-separator}#{$breakpoint} {
+            @include make-col($i);
+         }
+      }
+
+      .u-w-auto#{$qnorr-breakpoint-separator}#{$breakpoint}{
+         flex-grow: 1;
+         flex-basis: 0px;
+         max-width: 100%;
+         width: auto;
+      }
+   }
+}
+
+
+
+
+/*
+   Grid offset classes
+   ========================================================================== */
+@for $i from 1 through $qnorr-grid-columns {
+   $widthCalc:  percentage($i/ $qnorr-grid-columns);
+
+   .u-push-#{$i}\/#{$qnorr-grid-columns},
+   .u-push-#{$i}{
+      margin-left: $widthCalc;
+   }
+
+   .u-pull-#{$i}\/#{$qnorr-grid-columns},
+   .u-pull-#{$i} {
+      margin-left: - $widthCalc;
+   }
+}
+
+//responsive offsets
+@each $breakpoint in $u-w-breakpoints-list{
+   @include mappy-bp($breakpoint){
+      @for $i from 1 through $qnorr-grid-columns {
+         $widthCalc:  percentage($i/ $qnorr-grid-columns);
+
+         .u-push-#{$i}\/#{$qnorr-grid-columns}#{$qnorr-breakpoint-separator}#{$breakpoint},
+         .u-push-#{$i}#{$qnorr-breakpoint-separator}#{$breakpoint} {
+            margin-left: $widthCalc;
+         }
+
+         .u-pull-#{$i}\/#{$qnorr-grid-columns}#{$qnorr-breakpoint-separator}#{$breakpoint},
+         .u-pull-#{$i}#{$qnorr-breakpoint-separator}#{$breakpoint} {
+            margin-left: - $widthCalc;
+         }
+      }
+
+      .u-push-auto#{$qnorr-breakpoint-separator}#{$breakpoint}{
+         margin-left: auto;
+      }
+
+      .u-pull-auto#{$qnorr-breakpoint-separator}#{$breakpoint}{
+         margin-right: auto;
+      }
+   }
+}
+
+
+/*
+   Todo: sizing classes
+   ========================================================================== */
+
+

@@ -1,0 +1,20 @@
+/*
+    TOOLS.FUNCTIONS
+    ----
+
+    Global, app-wide helper functions
+    Some are just shortcuts to avoid verbosity
+    and remember map names.
+* ==================================================== */
+
+@import "functions/t.strip-unit";
+@import "functions/t.pow";
+@import "functions/t.map-deep-get";
+@import "functions/t.px-to-rem";
+@import "functions/t.get-color";
+@import "functions/t.get-transition";
+@import "functions/t.luminance";
+@import "functions/t.decimal-round";
+
+
+
