@@ -62,6 +62,7 @@ export function qnorrSass() {
     .pipe($.if(productionEnv,$.cleanCss({
     	level: 2
 	  })))
+	  .pipe($.rename({ suffix: '.min' }))
     .pipe($.if(productionEnv, $.size({title:  $.util.colors.bgRed('[SIZE] Styles: ')})))
     .pipe($.if(!productionEnv, $.sourcemaps.write({
       includeContent: true,
@@ -72,7 +73,7 @@ export function qnorrSass() {
 }
 
 export function qnorrSassGzip(){
-	 return gulp.src(paths.build + 'qnorr.css')
+	 return gulp.src(paths.build + 'qnorr.min.css')
     .pipe($.gzip())
     .pipe(gulp.dest(paths.build))
 }
