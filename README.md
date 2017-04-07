@@ -7,7 +7,7 @@ If you're on a diet, and using sass, consider importing just flavours that matte
 ### usage
 Install via `npm`.
 ```shell
-npm install qnorr-sass --dev
+npm install qnorr-sass
 ```
 
 Season your project
