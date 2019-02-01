@@ -1,22 +1,39 @@
-# qnorr-sass
-A style agnostic, slightly opinionated, sass seasoning to bootstrap your projects.  
+A style agnostic, slightly opinionated, style seasoning to bootstrap your projects.
 
-Full qnorr seasoning flask currently adds _~70 kalories (9kal, gziped)_ to your dish.
-If you're on a diet, and using sass, consider importing just your favorite flavours. 
-
-### usage
+## usage
 Install via `npm`.
 ```shell
-npm install qnorr-sass
+npm install qnorr-css
 ```
 
 Season your project
-```SASS
-@import "path/to/node_modules/qnorr-sass/sass/qnorr";
+```scss
+@import "path/to/node_modules/qnorr-css/scss/qnorr";
+or if your using a bundler (webpack)
+@import "~qnorr-css/scss/qnorr"
 ```
 
-or if your not using preprocessors
+Choose your seasonings
+```scss
+// Required
+@import "~qnorr-css/scss/settings/index";
+@import "~qnorr-css/scss/tools/index";
 
-```CSS
-@import "path/to/node_modules/qnorr-sass/dist/qnorr.min.css";
+// optional external dependency
+@import "~normalize.css/normalize.css";
+// Optional (check all atoms available at )
+@import "~qnorr-css/scss/base/reset";
+@import "~qnorr-css/scss/objects/media";
+@import "~qnorr-css/scss/objects/media";
+@import "~qnorr-css/scss/utilties/spacers";
 ```
+
+
+## Dependencies
+qnorr ships with two dependencies by default:
+- [mappy-breakpoints](https://github.com/zellwk/mappy-breakpoints) to handle our media query needs (required, no-opt-out)
+- [normalize.css](https://github.com/necolas/normalize.css/) to reset browser styles (optional import if you're using scss verison)
+
+
+## License
+[MIT](LICENSE) — made by Whitesmith.
