@@ -39,3 +39,5 @@ jspm_packages
 # builds
 dist/
 yarn-error*
+.cache/
+public/
