@@ -15,19 +15,21 @@
   "oocss",
   "functional css"
  ],
+ "main": "dist/qnorr.css",
+ "style": "dist/qnorr.css",
  "scripts": {
-		"dev": "node-sass -w --output-style expanded --source-map true --source-map-contents true --precision 6 scss/qnorr.scss dist/qnorr.css",
-		"build": "yarn run clean:dist && yarn run preprocess && yarn run postprocess",
-		"clean:dist": "rm -rf dist/*",
-		"preprocess": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/qnorr.scss dist/qnorr.css",
-		"postprocess": "postcss 'dist/*.css' --replace && postcss 'dist/*.css' --o 'dist/qnorr.min.css' --env=production",
-		"dev:qnorr": "gulp watching",
-		"build:qnorr": "gulp",
-		"dev:site": "rm -rf public/** && parcel site/index.html --out-dir public",
-		"build:site": "rm -rf public/** && parcel build site/index.html --out-dir public",
-		"deploy:site": "yarn run build:site && node deploy.js",
-		"start": "concurrently 'yarn run dev:qnorr' 'yarn run dev:site'",
-		"build:all": "yarn run build:qnorr && yarn run build:site"
+  "dev": "node-sass -w --output-style expanded --source-map true --source-map-contents true --precision 6 scss/qnorr.scss dist/qnorr.css",
+  "build": "yarn run clean:dist && yarn run preprocess && yarn run postprocess",
+  "clean:dist": "rm -rf dist/*",
+  "preprocess": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/qnorr.scss dist/qnorr.css",
+  "postprocess": "postcss 'dist/*.css' --replace && postcss 'dist/*.css' --o 'dist/qnorr.min.css' --env=production",
+  "dev:qnorr": "gulp watching",
+  "build:qnorr": "gulp",
+  "dev:site": "rm -rf public/** && parcel site/index.html --out-dir public",
+  "build:site": "rm -rf public/** && parcel build site/index.html --out-dir public",
+  "deploy:site": "yarn run build:site && node deploy.js",
+  "start": "concurrently 'yarn run dev:qnorr' 'yarn run dev:site'",
+  "build:all": "yarn run build:qnorr && yarn run build:site"
  },
  "devDependencies": {
   "@babel/core": "^7.2.2",
