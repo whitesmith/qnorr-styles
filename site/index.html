@@ -1,0 +1,12 @@
+<extends src="base.html">
+   <block name="root">
+      <h1>{{title}}</h1>
+      <h1>{{test}}</h1>
+
+      Content
+      <!-- module !!Note the leading slash!! -->
+      <module href="/module.html">
+         Inject into module ✅
+      </module>
+   </block>
+</extends>

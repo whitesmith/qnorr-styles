@@ -1,51 +1,58 @@
 {
-  "name": "qnorr-sass",
-  "version": "1.0.0",
-  "description": "A style agnostic, slightly opinionated, sass seasoning to bootstrap your projects",
-  "main": "gulpfile.babel.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node node_modules/gulp/bin/gulp.js",
-    "build": "node node_modules/gulp/bin/gulp.js build --env production"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/whitesmith/qnorr-sass.git"
-  },
-  "keywords": [
-    "sass",
-    "scss",
-    "stylesheets",
-    "bootstrap",
-    "sass",
-    "framework"
-  ],
-  "author": "Whitesmith",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/whitesmith/qnorr-sass/issues"
-  },
-  "homepage": "https://github.com/whitesmith/qnorr-sass#readme",
-  "devDependencies": {
-    "babel-preset-es2015": "^6.24.1",
-    "babel-register": "^6.24.1",
-    "browser-sync": "^2.18.8",
-    "del": "^2.2.2",
-    "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-clean-css": "^3.0.4",
-    "gulp-cssnano": "^2.1.2",
-    "gulp-csso": "^3.0.0",
-    "gulp-gzip": "^1.4.0",
-    "gulp-if": "^2.0.2",
-    "gulp-load-plugins": "^1.5.0",
-    "gulp-merge-media-queries": "^0.2.1",
-    "gulp-notify": "^3.0.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-size": "^2.1.0",
-    "gulp-sourcemaps": "^2.5.1",
-    "gulp-util": "^3.0.8"
-  }
+ "name": "qnorr-css",
+ "version": "0.1.0",
+ "description": "A style agnostic, slightly opinionated, css framework  seasoning to bootstrap your projects",
+ "repository": "git@github.com:whitesmith/qnorr-css.git",
+ "author": "Whitesmith <info@whitesmith.co>",
+ "license": "MIT",
+ "keywords": [
+  "css",
+  "scss",
+  "sass",
+  "stylesheets",
+  "bootstrap",
+  "framework",
+  "oocss",
+  "functional css"
+ ],
+ "scripts": {
+		"dev": "node-sass -w --output-style expanded --source-map true --source-map-contents true --precision 6 scss/qnorr.scss dist/qnorr.css",
+		"build": "yarn run clean:dist && yarn run preprocess && yarn run postprocess",
+		"clean:dist": "rm -rf dist/*",
+		"preprocess": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/qnorr.scss dist/qnorr.css",
+		"postprocess": "postcss 'dist/*.css' --replace && postcss 'dist/*.css' --o 'dist/qnorr.min.css' --env=production",
+		"dev:qnorr": "gulp watching",
+		"build:qnorr": "gulp",
+		"dev:site": "rm -rf public/** && parcel site/index.html --out-dir public",
+		"build:site": "rm -rf public/** && parcel build site/index.html --out-dir public",
+		"deploy:site": "yarn run build:site && node deploy.js",
+		"start": "concurrently 'yarn run dev:qnorr' 'yarn run dev:site'",
+		"build:all": "yarn run build:qnorr && yarn run build:site"
+ },
+ "devDependencies": {
+  "@babel/core": "^7.2.2",
+  "@babel/preset-env": "^7.3.1",
+  "@babel/register": "^7.0.0",
+  "autoprefixer": "^9.4.7",
+  "concurrently": "^4.1.0",
+  "cssnano": "^4.1.8",
+  "del": "^3.0.0",
+  "gh-pages": "^2.0.1",
+  "gulp": "^4.0.0",
+  "gulp-postcss": "^8.0.0",
+  "gulp-rename": "^1.4.0",
+  "gulp-sass": "^4.0.2",
+  "gulp-sourcemaps": "^2.6.4",
+  "node-sass": "^4.11.0",
+  "parcel-bundler": "^1.11.0",
+  "postcss-cli": "^6.1.1",
+  "postcss-modules": "^1.4.1",
+  "posthtml-expressions": "^1.1.0",
+  "posthtml-extend": "^0.3.0",
+  "posthtml-modules": "^0.4.2"
+ },
+ "dependencies": {
+  "mappy-breakpoints": "^0.2.3",
+  "normalize.css": "^8.0.1"
+ }
 }

@@ -1,148 +1,44 @@
-import gulp from 'gulp';
-import gulpLoadPlugins from 'gulp-load-plugins';
-import del from 'del';
-import BrowserSync from 'browser-sync';
-import pkg from './package.json';
+import { src, dest, series, watch, lastRun } from "gulp";
+import scss from "gulp-sass";
+import sourcemaps from 'gulp-sourcemaps';
+import postcss from 'gulp-postcss';
+import rename from 'gulp-rename';
+import autoprefixer from "autoprefixer";
+import del from "del";
+import cssnano from "cssnano";
 
-const browserSync = BrowserSync.create();
-const $ = gulpLoadPlugins();
-const productionEnv = $.util.env.env === 'production';
 
 const paths = {
-	build: 'dist/',
-	playground: {
-		dest: "playground/"
-	},
-	tunnelUrl: "qnorr-sass",
-  stylesheets: {
-    manifesto: 'sass/qnorr.scss',
-    src:  'sass/**/*.{scss, sass}',
-    dest: 'dist/'
-  },
-};
+	scss: {
+		src: "./scss",
+		dest: "./dist"
+	}
+}
 
+function clean(cb){
+	return del(`${paths.scss.dest}/**`);
+}
 
-export function handleError(task) {
-  return function (err) {
+function build(cb){
+	var plugins = [
+		autoprefixer(),
+		cssnano()
+	];
 
-    $.notify.onError({
-      message: task + ' failed, check the logs..',
-      sound: true
-    })(err);
+	return src(`${paths.scss.src}/qnorr.scss`, {since: lastRun(build)})
+		.pipe(sourcemaps.init())
+		.pipe(scss().on('error', scss.logError))
+		.pipe(postcss([autoprefixer()]))
+		.pipe(dest(paths.scss.dest)) // non minified version
+		.pipe(postcss(plugins))
+		.pipe(rename({ suffix: '.min' }))
+		.pipe(sourcemaps.write('.'))
+		.pipe(dest(paths.scss.dest))
+}
 
-    $.util.log($.util.colors.bgRed(task + ' error:'), $.util.colors.red(err));
-    this.emit('end');
-  };
-};
-
-
-
-/*
- * Generate
- */
-export function qnorrSass() {
-  return gulp.src(paths.stylesheets.manifesto)
-    .pipe($.plumber())
-    .pipe($.if(!productionEnv, $.sourcemaps.init({
-      loadMaps: true
-    })))
-    .pipe($.sass({
-      precision: 3,
-      sourceComments: !productionEnv,
-      outputStyle: productionEnv ? 'compressed' : 'nested'
-    }))
-    .on('error', handleError('styles'))
-    .pipe($.autoprefixer({
-      browsers: [
-        'last 2 versions',
-        'ie >= 10',
-        'android >= 4.4'
-      ]
-    }))
-    .pipe($.if(productionEnv, $.size({title:  $.util.colors.bgRed('[SIZE] Styles: ')})))
-    .pipe($.if(!productionEnv, $.sourcemaps.write({
-      includeContent: true,
-      sourceRoot: '.'
-    })))
-    .pipe(gulp.dest(paths.stylesheets.dest))
-    .pipe(browserSync.reload({stream: true}))
+export function watching() {
+	return watch(`${paths.scss.src}/**/*.scss`, build);
 }
 
 
-export function qnorrMinify(){
-	 return gulp.src(paths.build + 'qnorr.css')
-	    .pipe($.mergeMediaQueries())
-	    .pipe($.if(productionEnv,$.cleanCss()))
-		  .pipe($.rename({ suffix: '.min' }))
-	    .pipe(gulp.dest(paths.build))
-}
-export function qnorrSassGzip(){
-	 return gulp.src(paths.build + 'qnorr.min.css')
-    .pipe($.gzip())
-    .pipe(gulp.dest(paths.build))
-}
-
-/*
- * Local server using BrowserSync
- */
-export function browserSyncServer(done){
-  var config = {
-      server: {
-        baseDir: paths.playground.dest,
-        serveStaticOptions: {
-          extensions: ['html']
-        }
-      }
-  }
-  //run TUNNEL=true gulp to start public tunnel url to share.
-  if (process.env.TUNNEL === 'true') {
-    config.tunnel = paths.tunnelUrl;
-  }
-
-  browserSync.init(config);
-  done()
-}
-
-
-
-/*
- * Listen for Changes
- */
-export function watch() {
-  gulp.watch(paths.stylesheets.src, qnorrSass);
-  $.util.log($.util.colors.bgGreen('Watching for changes...'));
-}
-
-
-// Clean builds
-const clean = (done) => del([ paths.build ], done);
-
-/*
- * Build
- */
-const build = gulp.series(
-  clean,
-  gulp.parallel(
-    qnorrSass
-  ),
-  qnorrMinify,
-  qnorrSassGzip
-);
-
-
-/*
- * Serve
- *
- * Serve the deployable folder watch for changes and start a dev server
- */
-const serve = gulp.series(
-  build,
-  gulp.parallel(watch, browserSyncServer)
-);
-
-
-/* Export const functions */
-export {clean, build, serve};
-
-/* Default gulp task as serve*/
-export default serve;
+export default series(clean, build);
