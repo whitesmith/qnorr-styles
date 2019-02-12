@@ -19,7 +19,7 @@
             line-height: $mixin-line-height;
         }
 
-        @elseif ($mixin-line-height != none and $mixin-line-height != false) {
+        @else if ($mixin-line-height != none and $mixin-line-height != false) {
             @warn "D’oh! ‘#{$mixin-line-height}’ is not a valid value for `line-height`."
         }
 
