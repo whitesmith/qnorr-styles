@@ -35,15 +35,10 @@ a8"    `Y88  88P'   `"8a  a8"     "8a  88P'   "Y8  88P'   "Y8
 
 
 // SETTINGS
-@import "settings/s.globals";
-@import "settings/s.colors";
-@import "settings/s.mappy-breakpoints";
-@import "settings/s.transitions";
-@import "settings/s.typescale";
+@import "settings/index";
 
 // TOOLS
-@import "tools/t.functions.index";
-@import "tools/t.mixins.index";
+@import "tools/index";
 
 
 // BASE

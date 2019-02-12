@@ -1,4 +1,9 @@
+// this works because of parcel .sassrc
+// ~ is alias for ./scss/
+@import "~qnorr.scss";
+
+
 body {
-   background: black;
+   padding: $qnorr-base-font-size*10;
    color: lime;
 }

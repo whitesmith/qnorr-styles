@@ -1,31 +1,45 @@
 A style agnostic, slightly opinionated, style seasoning to bootstrap your projects.
 
-## usage
+## install
 Install via `npm`.
 ```shell
-yarn add qnorr-styles
+yarn add @whitesmith/@whitesmith/qnorr-styles
 ```
+## usage
 
-Season your project
+**at your `main.scss`**
 ```scss
-@import "path/to/node_modules/qnorr-css/scss/qnorr";
+@import "path/to/node_modules/@whitesmith/qnorr-styles/scss/qnorr";
 or if your using a bundler with alias for modules (webpack)
-@import "~qnorr-css/scss/qnorr"
+@import "~@whitesmith/qnorr-styles/scss/qnorr"
 ```
 
+**at your entry file `index.js`**
+```javascript
+import "@whitesmith/qnorr-styles"; // this will import qnorr.css from dist/qnorr.css
+
+// you can also import sass directly if your bunlder is configure to handle it
+import "@whitesmith/qnorr-styles/scss/qnorr.scss;
+
+const someJsFunction = _ => {
+	...
+}
+```
+
+
+### Customizing
 Choose your seasonings
 ```scss
 // Required
-@import "~qnorr-css/scss/settings/index";
-@import "~qnorr-css/scss/tools/index";
+@import "~@whitesmith/qnorr-styles/scss/settings";
+@import "~@whitesmith/qnorr-styles/scss/tools";
 
 // optional external dependency
 @import "~normalize.css/normalize.css";
 // Optional (check all modules available at scss/** )
-@import "~qnorr-css/scss/base/reset";
-@import "~qnorr-css/scss/objects/media";
-@import "~qnorr-css/scss/objects/media";
-@import "~qnorr-css/scss/utilties/spacers";
+@import "~@whitesmith/qnorr-styles/scss/base/reset";
+@import "~@whitesmith/qnorr-styles/scss/objects/media";
+@import "~@whitesmith/qnorr-styles/scss/utilties/spacers";
 ```
 
 
