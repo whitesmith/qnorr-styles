@@ -1,5 +1,5 @@
 {
- "name": "qnorr-css",
+ "name": "@whitesmith/qnorr-styles",
  "version": "0.1.0",
  "description": "A style agnostic, slightly opinionated, css framework  seasoning to bootstrap your projects",
  "repository": "git@github.com:whitesmith/qnorr-css.git",
