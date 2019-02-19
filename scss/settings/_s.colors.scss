@@ -1,44 +1,44 @@
-/*
-    SETTINGS.COLORS
-    ----
-
-    App wide colors united on sexy sass map
-    Use getAppColor() function to extract color and
-    tints and shades
-
-    Notes: you can put single variables here if
-    doesn't fit the getAppColor() pattern
-* ==================================================== */
-
-
+////
+/// Nested color map. Colors are defined from lighter (100) to darker (900)
+/// with a base value of 500
+/// @group Settings
+/// @author AuthorName
+////
 $qnorr-color-maps: (
-   primary: (
-      lighter: mix(#0C77F8, white, 80%),
-      light: #2889FF,
-      base: #0C77F8,
-      dark: #0A60CA,
-      darker: mix(#0C77F8, black, 80%),
-   ),
-   grayscale:(
-      heaven: #F2F4F8,
-      smoke: #F0F2F5,
-      lighter: #DFE1E3,
-      light: #CDCFD1,
-      base: #BABCBF,
-      dark: #59636E,
-      darker: #3C4854,
-      darkest: #2E373E,
-      "black": #1C2432
-   ),
-   danger: #FF5151,
-   success: #45E9AC,
-   warning: #FEB904,
-   "white": #fff
-);
+  primary: (
+    100: mix(#0C77F8, white, 80%),
+    200: #2889FF,
+    300: #0C77F8,
+    400: #0A60CA,
+    500: mix(#0C77F8, black, 80%),
+    600: mix(#0C77F8, black, 80%),
+    700: mix(#0C77F8, black, 80%),
+    800: mix(#0C77F8, black, 80%),
+    900: mix(#0C77F8, black, 80%),
+  ),
+  grayscale:(
+    100: #F2F4F8,
+    200: #F0F2F5,
+    300: #DFE1E3,
+    400: #CDCFD1,
+    500: #BABCBF,
+    600: #59636E,
+    700: #3C4854,
+    800: #2E373E,
+    900: #1C2432
+  ),
+  danger: #FF5151,
+  success: #45E9AC,
+  warning: #FEB904,
+  "white": #fff
+) !default;
 
-
-$social-media-colors-map: (
-    facebook: #365899,
-    github: #333,
-    twitter: #00aced,
+///
+/// World wide known products that have famous colors
+/// @type Map
+///
+$qnorr-social-media-color-map: (
+  facebook: #365899,
+  github: #333,
+  twitter: #00aced,
 );
