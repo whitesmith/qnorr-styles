@@ -21,18 +21,16 @@
 
 
 ///
-/// Creates the media object wrapper
+/// Creates the media object wrapper. This element must be direct childs of media
 ///
 /// @requires px-to-rem
 /// @param {Number} $space [$qnorr-pixel-grid-unit*2] - the space between
 ///   figure and content applied in the right direction if first or last
 ///   child
 ///
-///  1. This elements must be direct childs of o-media
 ///
-
-// [1]
-@mixin media-figure($space: $qnorr-pixel-grid-unit*2) {
+///
+@mixin media-figure($space: $qnorr-pixel-grid-unit*2){
   display: flex;
   flex: none; //do not shrink by default
 
@@ -49,11 +47,10 @@
 
 
 ///
-/// Apply to the text wrapper
+/// Apply to the text wrapper. This element must be direct childs of media
 ///
-
-// [1]
 @mixin media-body {
+  // [1]
   flex: 1 0 0.000000000001px;
   min-width: 0px;
 }
