@@ -17,6 +17,9 @@
 ///
 /// @todo [2] solving includePaths might actual break
 /// npm deploy because of dependencies might be loded by other bundlers
+/// although we can advise to not import qnorr.scss directly but only its
+/// modules, and import dependencies from node_modules directly
+/// think about it.
 ///
 ////
 
