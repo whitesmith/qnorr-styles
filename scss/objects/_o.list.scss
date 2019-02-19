@@ -1,19 +1,12 @@
-/*
-    OBJECTS.LIST
-    ----
-
-	Order and unordered list of items
-* ==================================================== */
-
-
+/// @todo
 .o-list{
 	margin: 0; //reset default margins;
-	margin-bottom: $g-baseline;
+	margin-bottom: $qnorr-baseline;
 }
 
 	.o-list__item{
 		&:not(:last-child){
-			margin-bottom: $g-baseline / 2;
+			margin-bottom: $qnorr-baseline/2;
 		}
 	}
 
@@ -30,7 +23,7 @@
 		vertical-align: middle;
 
 		&:not(:last-child){
-			margin-right: $g-baseline / 2;
+			margin-right: $qnorr-baseline/2;
 		}
 	}
 }
