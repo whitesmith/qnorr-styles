@@ -1,6 +1,8 @@
-/* Helper by Hugo Giraudel
-========================================================================== */
+///
 /// Remove the unit of a length
+///
+/// @group Tools
+/// @author Hugo Giraudel
 /// @param {Number} $number - Number to remove unit from
 /// @return {Number} - Unitless number
 @function strip-unit($number) {

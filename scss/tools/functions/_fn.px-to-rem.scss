@@ -1,0 +1,12 @@
+///
+/// Converts pixels to rem units
+/// @requires {function} strip-unit
+/// @requires $qnorr-base-font-size
+///
+/// @param {Number} $pixel-value [$qnorr-base-font-size] - Pixel Number to covert
+/// @group Tools
+/// @author Hugo Giraudel
+///
+@function px-to-rem($pixel-value: $qnorr-base-font-size){
+   @return (strip-unit($pixel-value) / strip-unit($qnorr-base-font-size) ) * 1rem;
+};

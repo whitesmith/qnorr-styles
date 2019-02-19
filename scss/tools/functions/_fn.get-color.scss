@@ -1,0 +1,19 @@
+///
+/// Returns color value for a specic color name and tone
+///
+/// @group Tools
+/// @param {Color} $color - Color
+/// @return {String} color hex code value
+///
+@function get-color($color, $tone: 500) {
+  @if map-has-key($qnorr-color-maps, $color) {
+    @if (type-of(map-get($qnorr-color-maps, $color)) == 'color' )  {
+      @return map-get($qnorr-color-maps, $color);
+    } @else {
+      @return map-deep-get($qnorr-color-maps, $color, $tone); // it's a map, get tone
+    }
+  }
+
+  @error "`#{$color}` is not in $qnorr-color-maps. Check _s.colors.scss";
+  @return false;
+}

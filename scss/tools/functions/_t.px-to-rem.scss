@@ -1,6 +1,0 @@
-/*
-   dependes on strip units functions
-*/
-@function px-to-rem($pixels: $qnorr-base-font-size){
-   @return (strip-unit($pixels) / strip-unit($qnorr-base-font-size) ) * 1rem;
-};

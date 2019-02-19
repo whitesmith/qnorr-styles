@@ -1,8 +1,13 @@
+///
 /// Returns the luminance of `$color` as a float (between 0 and 1)
 /// 1 is pure white, 0 is pure black
+///
+/// @group Tools
 /// @param {Color} $color - Color
 /// @return {Number}
 /// @link http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef Reference
+/// @author Hugo Girauldel
+///
 @function luminance($color) {
   $colors: (
     'red': red($color),
