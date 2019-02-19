@@ -101,3 +101,26 @@ hr{
   opacity: 0.18;
   padding: 8px 0px;
 }
+
+
+h1, h2, h3, h4, h5, h6,
+input, button {
+ font-family: $qnorr-font-family;
+}
+
+
+code, pre {
+  font-family: $qnorr-monospace-font-family;
+}
+
+
+/*
+  All type components are created equal, by default
+*/
+@for $i from 1 to 7 {
+  h#{$i} {
+     margin: 0;
+     font-size: 1em;
+     font-weight: 500;
+  }
+}
