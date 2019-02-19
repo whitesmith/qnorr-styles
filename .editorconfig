@@ -20,7 +20,7 @@ charset = utf-8
 
 [*.{scss,css,sass}]
 indent_style = space
-indent_size = 3
+indent_size = 2
 
 [*.{html,hbs,erb,haml}]
 indent_style = space
