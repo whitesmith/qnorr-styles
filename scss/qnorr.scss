@@ -24,44 +24,19 @@
 // SETTINGS
 @import "settings/index";
 
-// TOOLS USE NPM LINK TO SEE IF THIS BREAKS SASS IMPORT
+// TOOLS [2]
 @import "../node_modules/mappy-breakpoints/_mappy-breakpoints.scss"; //[1]
 @import "tools/index";
 
-
-// BASE
-@import "base/b.document";
-@import "base/b.reset";
-@import "base/b.typography";
-
 /// GLOBAL
 @import "../node_modules/normalize.css/normalize"; // [1]
+@import "global/index";
 
 // OBJECTS
-@import "objects/o.skeleton";
-@import "objects/o.wrapper";
-@import "objects/o.section";
-@import "objects/o.grid";
-@import "objects/o.media";
-@import "objects/o.box";
-@import "objects/o.block";
-@import "objects/o.ratio";
-@import "objects/o.crop";
-
-
-// COMPONENTS
-@import "components/c.typography";
-
-
-// SCOPES
-@import "scopes/s.flout";
-
+@import "objects/index";
 
 // UTITLITIES
-@import "utilities/u.helpers";
-@import "utilities/u.spacing";
-@import "utilities/u.widths";
-@import "utilities/u.text-alignment";
-@import "utilities/u.visibility";
-@import "utilities/u.typography";
-@import "utilities/u.coloring";
+@import "utilities/index";
+
+// HACKS
+@import "hacks/index";
