@@ -23,20 +23,19 @@
   "clean:dist": "rm -rf dist/*",
   "preprocess": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/qnorr.scss dist/qnorr.css",
   "postprocess": "postcss 'dist/*.css' --replace && postcss 'dist/*.css' --o 'dist/qnorr.min.css' --env=production",
-  "dev:qnorr": "gulp watching",
+  "dev:qnorr": "gulp dev",
   "build:qnorr": "gulp",
   "dev:site": "rm -rf public/** && parcel site/index.html --out-dir public",
   "build:site": "rm -rf public/** && parcel build site/index.html --out-dir public --public-url ./",
   "deploy:site": "yarn run build:site && node deploy.js",
-  "start": "concurrently 'yarn run dev:qnorr' 'yarn run dev:site'",
-  "build:all": "yarn run build:qnorr && yarn run build:site"
+  "start": "yarn run dev:qnorr",
+  "build:all": "yarn run build:site &&  yarn run build:qnorr"
  },
  "devDependencies": {
   "@babel/core": "^7.2.2",
   "@babel/preset-env": "^7.3.1",
   "@babel/register": "^7.0.0",
   "autoprefixer": "^9.4.7",
-  "concurrently": "^4.1.0",
   "cssnano": "^4.1.8",
   "del": "^3.0.0",
   "gh-pages": "^2.0.1",
@@ -46,12 +45,15 @@
   "gulp-sass": "^4.0.2",
   "gulp-sourcemaps": "^2.6.4",
   "node-sass": "^4.11.0",
+  "npm-run-all": "^4.1.5",
   "parcel-bundler": "^1.11.0",
   "postcss-cli": "^6.1.1",
   "postcss-modules": "^1.4.1",
   "posthtml-expressions": "^1.1.0",
   "posthtml-extend": "^0.3.0",
-  "posthtml-modules": "^0.4.2"
+  "posthtml-modules": "^0.4.2",
+  "sass-module-importer": "^1.4.0",
+  "sassdoc": "^2.5.1"
  },
  "dependencies": {
   "mappy-breakpoints": "^0.2.3",
