@@ -1,0 +1,115 @@
+////
+/// All mixins required to create grid objects
+///
+/// @group Tools
+/// @author Whitesmith
+////
+
+///
+/// Apply grid gutter for each breakpoint defined in configuration
+///
+/// @param {List} $rules ["padding-left"] - css properties to apply
+/// @param {Map} $breakpoint-map [$qnorr-grid-gutter-map]
+/// @param {Boolean} $negation [false] - negate value applied to $property
+/// @output $property: value per breakpoint
+///
+@mixin qnorr-grid-gutters (
+  $rules: ("padding-left"),
+  $breakpoint-map: $qnorr-grid-gutter-map,
+  $negation: false
+) {
+  @each $breakpoint, $gutter in $breakpoint-map {
+    $cur_gutter: px-to-rem($gutter);
+    @if ($breakpoint == null) {
+      @each $prop in $rules {
+        #{$prop}: if($negation, -#{cur_gutter}, $cur_gutter);
+      }
+    } @else {
+      @media (min-width: $breakpoint) {
+        @each $prop in $rules {
+          #{$prop}: if($negation, -#{cur_gutter}, $cur_gutter);
+        }
+      }
+    }
+  }
+}
+
+
+///
+/// Create a contianer for grid columns
+///
+/// @require {mixin} qnorr-grid-gutters
+///
+/// @param {Boolean} $flush [false] - remove gutter offset
+/// @param {Map} $breakpoint-map [$qnorr-grid-gutter-map]
+/// @output flex css to accomodate grid-columns
+///
+@mixin qnorr-grid($flush: false, $breakpoint-map: $qnorr-grid-gutter-map){
+  position: relative;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @if ($flush == false) {
+    // apply negative offset = to gutter
+    @include qnorr-grid-gutters($rules: ("margin-left"), $negation: true);
+  }
+}
+
+
+///
+/// Create a grid column inside grid container
+///
+/// @require {mixin} qnorr-grid - flush must be true if here as well
+/// @require {mixin} qnorr-grid-gutters
+///
+/// @param {Boolean} $flush [false] - remove gutter offset
+/// @param {Map} $breakpoint-map [$qnorr-grid-gutter-map]
+/// @output flex css to accomodate grid-columns
+///
+/// @ignore [1] -https://github.com/philipwalton/flexbugs#flexbug-12
+/// @example markup
+///   <div class="o-layout">
+///     <div class="o-layout__el--6">
+///
+/// @example scss
+///   .o-layout { @include qnorr-grid }
+///   .o-layout__el--6 { @include qnorr-grid-column(6)}
+///
+///
+@mixin qnorr-grid-column($flush: false, $breakpoint-map: $qnorr-grid-gutter-map) {
+  display: block; // [1]
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  max-width: 100%;
+
+  @if ($flush == false) {
+    @include qnorr-grid-gutters;
+  }
+}
+
+
+///
+/// Sets side of grid column, in percentage
+///
+/// @require {mixin} qnorr-grid-column - must be applied to grid-column
+///
+/// @param {String} $number-of-columns [auto] - how many columns should element span
+/// @output width in percentage, matching number of columns
+/// @example scss - asd
+///
+@mixin qnorr-grid-column-span($number-of-columns: 'auto') {
+   @if ($number-of-columns == 'auto' or $number-of-columns == null){
+      flex-grow: 1;
+      flex-shrink: 0;
+      flex-basis: auto;
+      max-width: 100%;
+   } @else {
+      flex: 0 0 percentage($number-of-columns / $qnorr-grid-columns-number);
+      width: percentage($number-of-columns / $qnorr-grid-columns-number);
+      max-width: percentage($number-of-columns / $qnorr-grid-columns-number);
+   }
+}

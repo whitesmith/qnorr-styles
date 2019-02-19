@@ -1,0 +1,50 @@
+////
+/// Skeleton mixins for skeleton objects
+/// @group Tools
+///
+/// @link https://philipwalton.github.io/solved-by-flexbox/demos/sticky-footer/
+////
+
+
+///
+/// Skeleton wrapper element expands to current parent size
+///
+@mixin skeleton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+///
+/// Skeleton tips (head and footer) to not shrink
+///
+@mixin skeleton-tip {
+  flex: none;
+}
+
+///
+/// Expands the body to the tips
+///
+/// @param {Boolean|String} $scrollable [false] wheter the conent inside body
+///   should be scrollable or not. Auto means Skeleton container doesn't have
+///   a fixed height (height auto). And has some tricks on IE
+///
+@mixin skeleton-body($scrollable: false){
+  position: relative;
+
+  @if ($scrollable) {
+    @if ($scrollable == 'auto'){
+      flex: 1 1 0.000000000001%;
+      width: auto;
+    } @else {
+      flex: 1 0 0.000000000001px;
+   }
+   overflow-x: hidden;
+   overflow-y: auto;
+   -webkit-overflow-scrolling: touch;
+  } @else {
+    width: 100%;
+    flex: 1 0 auto;
+  }
+}

@@ -1,0 +1,16 @@
+///
+/// Resets browser default appearance on elements
+///
+/// @group Tools
+/// @example scss — Resets browser appearance
+///   .selector { @include mixinName }
+///
+@mixin reset-appearance{
+  appearance: none;
+  background: none;
+  outline: none;
+  box-shadow: none;
+  border: 0;
+  border-radius: 0;
+}
+

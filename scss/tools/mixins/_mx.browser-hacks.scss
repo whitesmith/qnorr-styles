@@ -1,0 +1,54 @@
+////
+/// When we have no espace but to target specific browsers
+/// using specific css selectors.
+///
+/// @group Tools
+/// @author Jeff Clayton
+/// @link https://browserstrangeness.github.io/css_hacks.html#safari
+////
+
+
+///
+/// for IE 10 and 11
+/// @content any css property
+///
+@mixin for-modern-IE{
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    @content;
+  }
+}
+
+///
+/// for Edge browser 15+
+/// @content any css property
+///
+@mixin for-edge{
+  @supports (-ms-ime-align:auto) {
+    @content;
+  }
+}
+
+
+///
+/// For safari
+/// @content any css property
+///
+@mixin for-safari{
+  @supports (-webkit-marquee-repetition:infinite) and (object-fit:fill) {
+    @content;
+  }
+}
+
+
+///
+/// For safari-10
+/// @content any css property
+/// @deprecated Warning this will probably be removed
+///
+@mixin for-safari-10 {
+  @media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance:none) and (not (stroke-color:transparent)) {
+      @content;
+    }
+  }
+}

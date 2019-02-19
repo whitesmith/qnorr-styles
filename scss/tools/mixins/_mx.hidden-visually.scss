@@ -1,10 +1,10 @@
-/*
-    Hidden visually
-    ----
-
-    Mixin to quickly apply accessible hiding to elements.
-    https://github.com/inuitcss/inuitcss/
-*/
+///
+/// Hides element from the ui, keep it visible for screen readers
+///
+/// @group Tools
+/// @example scss — Hidden visually
+///   .selector { @include mixinName }
+///
 @mixin hidden-visually() {
     border: 0 !important;
     clip: rect(0 0 0 0) !important;

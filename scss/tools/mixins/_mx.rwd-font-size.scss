@@ -1,4 +1,12 @@
-// Utility function for mixin font-size
+////
+/// ☢️ [REFACTOR ME] Font-sizing mixins for a yet to
+/// define modular scale
+///
+/// @group Mixins
+///
+/// @todo everything, this should be refactor from ground
+/// up as it doens't work
+////
 @mixin make-font-size($fs-font-size) {
   // If $fs-font-size is a list, include
   // both font-size and line-height
@@ -13,10 +21,6 @@
   }
 }
 
-
-/*
-  @fs-source, can be a map, list or number
-*/
 @mixin responsive-font-size($fs-source, $fs-breakpoints: $qnorr-breakpoints-map) {
   @if type-of($fs-source) == 'map' {
    @each $fs-breakpoint, $fs-font-size in $fs-source {

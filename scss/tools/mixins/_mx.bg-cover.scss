@@ -1,10 +1,6 @@
-/*
-    bg-cover
-    ----
-
-   Because I find myself repeating this
-   3 lines too often
-*/
+///
+/// @group Tools
+///
 @mixin bg-cover($postion: center center){
     background-size: cover;
     background-position: $postion;

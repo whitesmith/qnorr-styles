@@ -1,0 +1,21 @@
+///
+/// Stretches elment to parent size
+///
+/// @group Tools
+///
+/// @param {Boolean} $pseudo [false] - Include content rule for
+///    pseudo elements.
+///
+/// @example scss — description
+///   .selector { @include mixinName }
+///
+@mixin expand-to-parent($pseudo: false){
+  @if $pseudo{
+    content: " ";
+  }
+  display: block;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+}
