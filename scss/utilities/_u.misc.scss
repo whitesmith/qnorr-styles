@@ -1,0 +1,19 @@
+////
+/// App wide misc helpers solve very specific uncategorizable problems
+/// @group Utilities
+////
+
+
+///
+/// Float clearance
+/// @requires {mixin} clearfix
+/// @example markup — Float clearance
+///   <div class="u-cf">
+///
+.u-cf {
+	@include clearfix();
+}
+
+
+
+
