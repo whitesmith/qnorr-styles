@@ -29,15 +29,11 @@ a8"    `Y88  88P'   `"8a  a8"     "8a  88P'   "Y8  88P'   "Y8
    6. UTILITIES
 */
 
-// VENDOR
-@import "vendor/mappy-breakpoints"; // [2]
-@import "vendor/normalize"; // [3]
-
-
 // SETTINGS
 @import "settings/index";
 
-// TOOLS
+// TOOLS USE NPM LINK TO SEE IF THIS BREAKS SASS IMPORT
+@import "../node_modules/mappy-breakpoints/_mappy-breakpoints.scss"; //[1]
 @import "tools/index";
 
 
@@ -46,6 +42,8 @@ a8"    `Y88  88P'   `"8a  a8"     "8a  88P'   "Y8  88P'   "Y8
 @import "base/b.reset";
 @import "base/b.typography";
 
+/// GLOBAL
+@import "../node_modules/normalize.css/normalize"; // [1]
 
 // OBJECTS
 @import "objects/o.skeleton";
