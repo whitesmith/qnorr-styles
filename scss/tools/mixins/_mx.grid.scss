@@ -22,12 +22,12 @@
     $cur_gutter: px-to-rem($gutter);
     @if ($breakpoint == null) {
       @each $prop in $rules {
-        #{$prop}: if($negation, -#{cur_gutter}, $cur_gutter);
+        #{$prop}: if($negation, -#{$cur_gutter}, $cur_gutter);
       }
     } @else {
-      @media (min-width: $breakpoint) {
+      @include mappy-bp($breakpoint) {
         @each $prop in $rules {
-          #{$prop}: if($negation, -#{cur_gutter}, $cur_gutter);
+          #{$prop}: if($negation, -#{$cur_gutter}, $cur_gutter);
         }
       }
     }

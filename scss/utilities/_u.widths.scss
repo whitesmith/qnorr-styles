@@ -6,78 +6,75 @@
 * ========================================================================== */
 
 //responsive grid sizing
+@for $i from 1 through $qnorr-grid-columns-number {
+  $widthCalc: percentage($i/ $qnorr-grid-columns-number);
+
+  .u-#{$i}\/#{$qnorr-grid-columns-number},
+  .u-colspan-#{$i}{
+    @include qnorr-grid-column-span($i);
+  }
+
+  .u-push-#{$i}\/#{$qnorr-grid-columns-number},
+  .u-push-#{$i}{
+     margin-left: $widthCalc;
+  }
+
+  .u-pull-#{$i}\/#{$qnorr-grid-columns-number},
+  .u-pull-#{$i} {
+     margin-left: - $widthCalc;
+  }
+}
+
+.u-width-auto {
+  flex-grow: 1;
+  flex-basis: 0px;
+  max-width: 100%;
+  width: auto;
+}
+
+.u-push-auto {
+  margin-left: auto;
+}
+
+.u-pull-auto {
+  margin-right: auto;
+}
+
 @each $breakpoint in $qnorr-grid-breakpoints-list{
-  @if $breakpoint == null {
-    @for $i from 1 through $qnorr-grid-columns-number {
+  // one media query per breakpoint type of selectors, instead o one selector one media query
+  @include mappy-bp($breakpoint){
+    @for $i from 1 through $qnorr-grid-columns-number{
       $widthCalc: percentage($i/ $qnorr-grid-columns-number);
 
-      .u-#{$i}\/#{$qnorr-grid-columns-number},
-      .u-colspan-#{$i}{
-        @include qnorr-grid-column($i);
+      .u-#{$i}\/#{$qnorr-grid-columns-number}#{$qnorr-breakpoint-separator}#{$breakpoint},
+      .u-colspan-#{$i}#{$qnorr-breakpoint-separator}#{$breakpoint} {
+        @include qnorr-grid-column-span($i);
       }
 
-      .u-push-#{$i}\/#{$qnorr-grid-columns-number},
-      .u-push-#{$i}{
-         margin-left: $widthCalc;
+      .u-push-#{$i}\/#{$qnorr-grid-columns-number}#{$qnorr-breakpoint-separator}#{$breakpoint},
+      .u-push-#{$i}#{$qnorr-breakpoint-separator}#{$breakpoint} {
+          margin-left: $widthCalc;
       }
 
-      .u-pull-#{$i}\/#{$qnorr-grid-columns-number},
-      .u-pull-#{$i} {
-         margin-left: - $widthCalc;
+      .u-pull-#{$i}\/#{$qnorr-grid-columns-number}#{$qnorr-breakpoint-separator}#{$breakpoint},
+      .u-pull-#{$i}#{$qnorr-breakpoint-separator}#{$breakpoint} {
+          margin-left: - $widthCalc;
       }
     }
 
-    .u-width-auto {
+    .u-width-auto#{$qnorr-breakpoint-separator}#{$breakpoint}{
       flex-grow: 1;
       flex-basis: 0px;
       max-width: 100%;
       width: auto;
     }
 
-    .u-push-auto {
+    .u-push-auto#{$qnorr-breakpoint-separator}#{$breakpoint}{
       margin-left: auto;
     }
 
-    .u-pull-auto {
+    .u-pull-auto#{$qnorr-breakpoint-separator}#{$breakpoint}{
       margin-right: auto;
-    }
-  }
-  @else {
-    // one media query per breakpoint type of selectors, instead o one selector one media query
-    @include mappy-bp($breakpoint){
-      @for $i from 1 through $qnorr-grid-columns-number{
-        $widthCalc: percentage($i/ $qnorr-grid-columns-number);
-
-        .u-#{$i}\/#{$qnorr-grid-columns-number}#{$qnorr-breakpoint-separator}#{$breakpoint},
-        .u-colspan-#{$i}#{$qnorr-breakpoint-separator}#{$breakpoint} {
-          @include qnorr-grid-column($i);
-        }
-
-        .u-push-#{$i}\/#{$qnorr-grid-columns-number}#{$qnorr-breakpoint-separator}#{$breakpoint},
-        .u-push-#{$i}#{$qnorr-breakpoint-separator}#{$breakpoint} {
-           margin-left: $widthCalc;
-        }
-
-        .u-pull-#{$i}\/#{$qnorr-grid-columns-number}#{$qnorr-breakpoint-separator}#{$breakpoint},
-        .u-pull-#{$i}#{$qnorr-breakpoint-separator}#{$breakpoint} {
-           margin-left: - $widthCalc;
-        }
-      }
-
-      .u-width-auto#{$qnorr-breakpoint-separator}#{$breakpoint}{
-        flex-grow: 1;
-        flex-basis: 0px;
-        max-width: 100%;
-        width: auto;
-      }
-
-      .u-push-auto#{$qnorr-breakpoint-separator}#{$breakpoint}{
-        margin-left: auto;
-      }
-
-      .u-pull-auto#{$qnorr-breakpoint-separator}#{$breakpoint}{
-        margin-right: auto;
-      }
     }
   }
 }
