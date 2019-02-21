@@ -1,0 +1,44 @@
+///
+/// Wrapping content in fixed width size
+///
+/// @group Tools
+/// @requires {mixin} qnorr-grid-gutters
+/// @requires {mixin} mappy-breakpoints::mappy-breakpoints
+///
+/// @param {Boolean} $flush [false] - Remove or not gutters around the wrapper
+/// @param {Boolean} $fluid [false] - Wheter to apply or not a fixed container size
+/// @param {Map} $sizes-breakpoint-map [$qnorr-wrapper-sizes-map] -
+///   a valid breakpoint map with size definition for each
+/// @param {Map} $padding-breakpoint-map [$qnorr-grid-gutter-map] -
+///   a valid breakpoint map with side padding definition for each breakpoint
+///
+/// @example scss
+///  .o-normal-container { @include qnorr-wrap } 
+///  .o-flushed-container { @include qnorr-wrap($flush: true) }
+///  .o-container-fluid { @include qnorr-wrap($fluid: true) }
+///
+@mixin qnorr-wrap(
+  $flush: false,
+  $fluid: false,
+  $sizes-breakpoint-map: $qnorr-wrapper-sizes-map,
+  $padding-breakpoint-map: $qnorr-grid-gutter-map
+){
+  display: block;
+	width: 100%;
+  margin: 0 auto;
+
+  @if not $fluid {
+    @each $bp, $size in $sizes-breakpoint-map {
+      @include mappy-bp($bp){
+        max-width: $size;
+      }
+    }
+  }
+
+  @if not $flush {
+    @include qnorr-grid-gutters(
+      $rules: ("padding-left", "padding-right"),
+      $breakpoint-map: $padding-breakpoint-map
+    );
+  }
+}

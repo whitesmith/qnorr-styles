@@ -1,0 +1,8 @@
+///
+/// @group Tools
+///
+@mixin bg-cover($postion: center center){
+    background-size: cover;
+    background-position: $postion;
+    background-repeat: no-repeat;
+}

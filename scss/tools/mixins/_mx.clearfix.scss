@@ -1,0 +1,14 @@
+///
+/// Clearing floats
+///
+/// @group Tools
+/// @example scss — Clearing floats
+///   .selector { @include clearfix; }
+///
+@mixin clearfix {
+  &:after {
+    content:" ";
+    display:block;
+    clear:both;
+  }
+}

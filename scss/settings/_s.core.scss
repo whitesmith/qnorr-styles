@@ -1,0 +1,104 @@
+////
+/// Qnorr framework generation core variables
+/// @group Settings
+///
+/// @link https://medium.com/built-to-adapt/intro-to-the-8-point-grid-system-d2573cde8632#.jqcuvw6bp
+////
+
+
+
+
+
+///
+/// This is the core variable that will define all vertical rhythm
+/// sapcers, gutter and everything space related
+/// @type Number
+///
+$qnorr-pixel-grid-unit: 8px !default;
+$qnorr-baseline: $qnorr-pixel-grid-unit !default;
+
+
+
+
+
+///
+/// /// Global Breakppoints, used to generated responsive utilties and
+/// feed mappy-breakpoints mixin. it will convert values to ems for
+/// consintent performance in most browsers
+/// @type Map - key value pairs where key is the breakpoint name alias
+/// to be used in media queries
+///
+$qnorr-breakpoints-map: (
+   'xxs':  360px,
+   'xs':   480px,
+   's' :   600px,
+   'sm':   768px,
+   'md':   992px,
+   'mdl':  1024px,
+   'lg':   1280px,
+   'xl':   1440px,
+   'xxl':  1650px,
+   'hd':   1920px
+) !default;
+
+///
+/// Feed mappy-breakpoints mixin (yup i also height that he didn't namespaced)
+/// @type Map
+/// @link http://zellwk.com/blog/media-query-units/
+///
+$breakpoints: $qnorr-breakpoints-map !default;
+
+///
+/// Character that will be used to indicate breakpoint utilization
+/// @type String
+///
+/// @example markup
+///   <div clas="u-1/2 u-8/12@xl">
+///
+$qnorr-breakpoint-separator: \@ !default; //escaped char
+
+
+
+///
+/// Number of grid columns, this will impact generated grid and width classes
+/// @type Number
+///
+$qnorr-grid-columns-number: 12 !default;
+
+///
+/// Breakpoint key pairs
+/// @requires $qnorr-breakpoints-map - *same breakpoint keys are required
+/// @type Map
+///
+$qnorr-grid-gutter-map: (
+  null: $qnorr-pixel-grid-unit,
+  xs:  $qnorr-pixel-grid-unit*2,
+  sm: $qnorr-pixel-grid-unit*3,
+  lg: $qnorr-pixel-grid-unit*4
+) !default;
+
+///
+/// Defines how many breakpoints our grid and spacing utilties have
+/// @requires $qnorr-breakpoints-map - *same breakpoint keys are required
+/// @type List
+///
+$qnorr-grid-breakpoints-list: ('xxs', 'sm', 'mdl', 'lg') !default; // a subset of $qnorr-breakpoints-map;
+
+
+
+
+
+///
+/// Wrapper sizes map
+/// @requires $qnorr-breakpoints-map - *same breakpoint keys are required
+/// @type List
+///
+$qnorr-wrapper-sizes-map: (
+  s:   600px,
+  sm:  720px,
+  md:  85%,
+  mdl: 100%,
+  lg:  1140px,
+  xl:  1280px,
+  xxl: 1580px
+) !default;

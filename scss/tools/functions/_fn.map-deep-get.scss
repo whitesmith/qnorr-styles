@@ -1,0 +1,17 @@
+
+///
+/// Recursive function, to get 2n nested map values
+///
+/// @group Tools
+/// @author Hugo Giraudel
+/// @access public
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - comma separated key chain strings "key1", "key2"
+/// @return {*} - Desired value
+///
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}

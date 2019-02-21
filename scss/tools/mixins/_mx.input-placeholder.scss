@@ -1,0 +1,25 @@
+///
+/// styles for inputs placeholders, cross-browser way
+///
+/// @group Tools
+/// @content css rules to apply for shadow dom browser element
+/// @example scss — description
+///   .selector { @include input-placeholder }
+///
+@mixin input-placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    @content;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+}

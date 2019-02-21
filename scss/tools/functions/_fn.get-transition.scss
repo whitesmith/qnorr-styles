@@ -1,0 +1,16 @@
+///
+/// Returns color value for a specic color name and tone
+///
+/// @group Tools
+/// @requires $qnorr-transitions-map
+/// @param {String} $transition [smooth] - Transition name defined on map
+/// @return {String} color hex code value
+///
+@function get-transition($transition: 'smooth') {
+  @if map-has-key($qnorr-transitions-map, $transition) {
+      @return map-get($qnorr-transitions-map, $transition);
+  }
+  //else
+  @error "`#{$transition}` is not in #{$map}. Check settings folder, maybe you mispelled a key";
+  @return false;
+}

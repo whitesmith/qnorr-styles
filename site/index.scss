@@ -4,6 +4,14 @@
 
 
 body {
-   padding: $qnorr-base-font-size*10;
-   color: lime;
+  background: #101010;
+  color: lime;
+}
+
+
+
+.box {
+  background-color: lime;
+  padding: 0.5rem;
+  color: black;
 }

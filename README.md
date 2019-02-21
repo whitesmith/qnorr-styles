@@ -26,6 +26,12 @@ const someJsFunction = _ => {
 }
 ```
 
+### Documentation
+
+> If it’s not documented, it doesn’t exist. Documentation should become the default – an integrated part of the development process.
+> — Miriam Suzanne
+
+[See full documentation](https://whitesmith.github.io/qnorr-styles/)
 
 ### Customizing
 Choose your seasonings

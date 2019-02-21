@@ -1,0 +1,45 @@
+////
+/// ☢️ [REFACTOR ME] Font-sizing mixins for a yet to
+/// define modular scale
+///
+/// @group Mixins
+///
+/// @todo everything, this should be refactor from ground
+/// up as it doens't work
+////
+@mixin make-font-size($fs-font-size) {
+  // If $fs-font-size is a list, include
+  // both font-size and line-height
+  @if type-of($fs-font-size) == "list" {
+    font-size: px-to-rem(nth($fs-font-size, 1));
+    @if (length($fs-font-size) > 1) {
+      line-height: decimal-ceil(nth($fs-font-size, 2) / nth($fs-font-size, 1), 2);
+    }
+  }
+  @else {
+    font-size: px-to-rem($fs-font-size);
+  }
+}
+
+@mixin responsive-font-size($fs-source, $fs-breakpoints: $qnorr-breakpoints-map) {
+  @if type-of($fs-source) == 'map' {
+   @each $fs-breakpoint, $fs-font-size in $fs-source {
+      @if $fs-breakpoint == null {
+        @include make-font-size($fs-font-size);
+      }
+      @else {
+        // If $fs-font-size is a key that exists in
+        // $fs-breakpoints, use the value
+        @if map-has-key($fs-breakpoints, $fs-breakpoint) {
+          $fs-breakpoint: map-get($fs-breakpoints, $fs-breakpoint);
+        }
+        @include mappy-bp ($fs-breakpoint) {
+          @include make-font-size($fs-font-size);
+        }
+        }
+    }
+  } @else{
+     @include make-font-size($fs-source);
+  }
+}
+

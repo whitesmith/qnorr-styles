@@ -1,0 +1,13 @@
+///
+/// Fix min height flex container not aligning children in IE
+///
+/// @author Flexbugs
+/// @link https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items
+/// @example markup — Fix min height flex container not aligning children in IE
+///   <div class="_flex-min-height-">
+///    <div class="my-flex-container-which-have-min-height-set">
+///
+._flex-min-height{
+  display: flex;
+  flex-direction: column;
+}

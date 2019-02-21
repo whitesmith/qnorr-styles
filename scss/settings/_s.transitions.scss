@@ -1,13 +1,8 @@
-/*
-    SETTINGS.TRANSITIONS
-    ----
-
-
-     Use getTransition(key) function to extract or
-     just use map-get($transitions-map, 'key');
-* ==================================================== */
-
-
+///
+/// More cool transition easing curves than default ones
+/// @group Settings
+/// @type Map
+///
 $qnorr-transitions-map: (
 	smooth: cubic-bezier(0.1, 0.82, 0.25, 1),
 	bounce: cubic-bezier(0.1, 0.82, 0.25, 1),

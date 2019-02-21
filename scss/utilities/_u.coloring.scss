@@ -1,41 +1,39 @@
-/*
-    UTILITIES.COLORING
-    ----
-
-    Atomic classes for give color to html elemtns
-    Use only on static elements, not interactive
-
-* ==================================================== */
-
-/*
-	generates
-    .u-color-@colorname-@tone for each color in colorshceme
-*/
-
+///
+/// Generates a color/bgColor utility classename of each color and tone
+/// defined in gloabl color maps
+///
+/// @group Utilities
+/// @requires $qnorr-color-maps
+/// @example markup
+///   <div class="u-color-primary-400"></div>
+///   <div class="u-bg-color-primary900"></div>
+/// @todo make this readable and documentabable - css selector + mixin
+///
 @each $color, $tone in $qnorr-color-maps {
-   @if type-of($tone) == 'map' {
-      $tones: map-keys($tone);
+  @if type-of($tone) == 'map' {
+    $tones: map-keys($tone);
 
-      @for $i from 1 through length($tones) {
-         @if nth($tones, $i) == "base" {
-            .u-color-#{$color} {
-                color: map-get($tone, nth($tones, $i ));
-            }
+    @for $i from 1 through length($tones) {
+      @if (nth($tones, $i) == 500 or nth($tones, $i) == "500") {
+        .u-color-#{$color}-#{nth($tones, $i)},
+        .u-color-#{$color} {
+          color: map-get($tone, nth($tones, $i ));
+        }
 
-            .u-bg-color-#{$color} {
-                background-color: map-get($tone, nth($tones, $i ));
-            }
-         } @else {
-         	.u-color-#{$color}-#{nth($tones, $i)} {
-         	    color: map-get($tone, nth($tones, $i ));
-         	}
+        .u-bg-color-#{$color} {
+          background-color: map-get($tone, nth($tones, $i ));
+        }
+      } @else {
+        .u-color-#{$color}-#{nth($tones, $i)} {
+          color: map-get($tone, nth($tones, $i ));
+        }
 
-            .u-bg-color-#{$color}-#{nth($tones, $i)} {
-                background-color: map-get($tone, nth($tones, $i ));
-            }
-         }
+        .u-bg-color-#{$color}-#{nth($tones, $i)} {
+          background-color: map-get($tone, nth($tones, $i ));
+        }
       }
-   } @else {
+    }
+  } @else {
     .u-color-#{$color}{
       color: map-get($qnorr-color-maps, $color);
     }
@@ -43,5 +41,5 @@
     .u-bg-color-#{$color}{
       background-color: map-get($qnorr-color-maps, $color);
     }
-   }
+  }
 }

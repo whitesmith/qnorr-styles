@@ -1,51 +1,36 @@
-/*
-    OBJECTS.WRAPPER
-    ----
+////
+/// @group Objects
+////
 
-
-   Page constraint object.
-==================================================== */
-
-$o-wrapper-sizes: $qnorr-wrapper-sizes-map;
-
-
+///
+/// Wrapper selector
+/// @example markup - Wrapper selectro
+///   <div class="o-wrapper">
+///
 .o-wrapper{
-	display: block;
-	width: 100%;
-	margin: 0 auto;
-	padding: {
-		left: px-to-rem($qnorr-baseline / 2);
-		right: px-to-rem($qnorr-baseline / 2);
-	}
+  @include qnorr-wrap;
+}
 
 
-   @each $breakpoint, $gutter in $qnorr-grid-gutter-map{
-      @if $breakpoint == null {
-         padding:{
-            left: px-to-rem($gutter);
-            right: px-to-rem($gutter);
-         }
-      } @else {
-         @include mappy-bp($breakpoint){
-            padding:{
-               left: px-to-rem($gutter);
-               right: px-to-rem($gutter);
-            }
-         }
-      }
-   }
-
-	@each $breakpoint, $size in $o-wrapper-sizes{
-		@include mappy-bp($breakpoint){
-			max-width: $size;
-		}
-	}
+///
+/// Wrapper modifier
+/// @example markup - Wrapper selectro
+///   <div class="o-wrapper o-wrapp--flush">
+///
+.o-wrapper--flush {
+  padding: {
+    left: 0;
+    right: 0;
+  }
+}
 
 
-	&--flush{
-		padding: {
-			left: 0;
-			right: 0;
-		}
-	}
+///
+/// Wrapper modifier
+/// @example markup - Wrapper selectro
+///   <div class="o-wrapper o-wrapper-fluid">
+///
+.o-wrapper--fluid {
+  width: 100%;
+  max-width: 100%;
 }

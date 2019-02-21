@@ -1,39 +1,29 @@
-/*
-   OBJECTS.RATIO
-   ----
+////
+/// Apply predefined standar ratios to elements
+/// @group Objects
+/// @link https://github.com/inuitcss/inuitcss/
+/// @link http://alistapart.com/article/creating-intrinsic-ratios-for-video
+////
 
-   Create ratio-bound content blocks, to keep media (e.g. images, videos) in
-   their correct aspect ratios.
-
-   1. Default cropping is a 1:1 ratio (i.e. a perfect square).
-
-   ----
-   Credits:
-   * https://github.com/inuitcss/inuitcss/
-   * http://alistapart.com/article/creating-intrinsic-ratios-for-video
-
-* ========================================================================== */
-
-// A list of aspect ratios that get generated as modifier classes.
+/// A list of aspect ratios that get generated as modifier classes.
+/// @type Map - Default common rations
 $o-ratios-list: (
-   (2:1),
-   (4:3),
-   (16:9),
-   ) !default;
-
+  (2:1),
+  (4:3),
+  (16:9),
+) !default;
 
 .o-ratio {
-   position: relative;
-   display: block;
-   overflow: hidden;
+  position: relative;
+  display: block;
+  overflow: hidden;
 
-   &:before {
-      content: "";
-      display: block;
-      width: 100%;
-      padding-bottom: 100%; /* [1] */
-   }
-
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    padding-bottom: 100%; /* [1] */
+  }
 }
 
 
@@ -41,12 +31,12 @@ $o-ratios-list: (
 .o-ratio > iframe,
 .o-ratio > embed,
 .o-ratio > object {
-   position: absolute;
-   top:    0;
-   bottom: 0;
-   left:   0;
-   height: 100%;
-   width:  100%;
+  position: absolute;
+  top:    0;
+  bottom: 0;
+  left:   0;
+  height: 100%;
+  width:  100%;
 }
 
 

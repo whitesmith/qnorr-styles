@@ -1,77 +1,45 @@
-/*!
-
- ,adPPYb,d8  8b,dPPYba,    ,adPPYba,   8b,dPPYba,  8b,dPPYba,
-a8"    `Y88  88P'   `"8a  a8"     "8a  88P'   "Y8  88P'   "Y8
-8b       88  88       88  8b       d8  88          88
-"8a    ,d88  88       88  "8a,   ,a8"  88          88
- `"YbbdP'88  88       88   `"YbbdP"'   88          88
-         88
-         88
-
-
-   WEB:  https://whitesmith.co
-   MAIL: info@whitesmith.co
-*/
-
-/*
-   Qnorr.scss
-   ----------------
-
-   Import all needed partials and other manifestos here
-   Mind the order, from low to hight specificity:
-
-   0. VENDOR, EXTERNAL LIBRARYS
-   1. SETTINGS
-   2. TOOLS
-   3. BASE
-   4. OBJECTS
-   5. COMPONENTS
-   6. UTILITIES
-*/
-
-// VENDOR
-@import "vendor/mappy-breakpoints"; // [2]
-@import "vendor/normalize"; // [3]
+////
+/// Qnorr Styles — A style agnostic, slightly opinionated,
+/// css framework  seasoning to bootstrap your projects
+///
+///   __ _ _ __   ___  _ __ _ __
+///  / _` | '_ \ / _ \| '__| '__|
+/// | (_| | | | | (_) | |  | |
+///  \__, |_| |_|\___/|_|  |_|
+///     |_|
+///
+/// @author Whitesmith
+/// @link https://github.com/whitesmith/qnorr-styles
+///
+/// @todo [1] investigate why gulp-sass includePaths is
+/// not working and we have to ref node modules with
+/// this ugly paths
+///
+/// @todo [2] solving includePaths might actual break
+/// npm deploy because of dependencies might be loded by other bundlers
+/// although we can advise to not import qnorr.scss directly but only its
+/// modules, and import dependencies from node_modules directly
+/// think about it.
+///
+////
 
 
 // SETTINGS
 @import "settings/index";
 
-// TOOLS
+// TOOLS [2]
+@import "../node_modules/mappy-breakpoints/_mappy-breakpoints.scss"; //[1]
 @import "tools/index";
 
-
-// BASE
-@import "base/b.document";
-@import "base/b.reset";
-@import "base/b.typography";
-
+/// GLOBAL
+@import "../node_modules/normalize.css/normalize"; // [1]
+@import "global/index";
 
 // OBJECTS
-@import "objects/o.skeleton";
-@import "objects/o.wrapper";
-@import "objects/o.section";
-@import "objects/o.grid";
-@import "objects/o.media";
-@import "objects/o.box";
-@import "objects/o.block";
-@import "objects/o.ratio";
-@import "objects/o.crop";
-
-
-// COMPONENTS
-@import "components/c.typography";
-
-
-// SCOPES
-@import "scopes/s.flout";
-
+@import "objects/index";
 
 // UTITLITIES
-@import "utilities/u.helpers";
-@import "utilities/u.spacing";
-@import "utilities/u.widths";
-@import "utilities/u.text-alignment";
-@import "utilities/u.visibility";
-@import "utilities/u.typography";
-@import "utilities/u.coloring";
+@import "utilities/index";
+
+// HACKS
+@import "hacks/index";

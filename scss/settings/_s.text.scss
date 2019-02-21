@@ -1,0 +1,56 @@
+////
+/// Text configurations
+/// @group Settings
+/// @todo refactor all this shit
+////
+
+/// @type String
+$system-font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif !default;
+
+
+/// @type String
+$qnorr-font-family: $system-font-family !default;
+/// @type String
+$qnorr-primary-font-family: $qnorr-font-family !default; // [1];
+/// @type String
+$qnorr-monospace-font-family: Roboto Mono, Inconsolata, monospace !default;
+
+/// @type Number
+$qnorr-base-font-size: 16px !default;
+
+/// @type Number
+$qnorr-base-leading: 24px !default;
+
+///
+/// @type Map - size, leading pairs, defining in pixels will convert everything to REM
+/// null means mobile first, that's the size of the font from 0px and beyond
+/// @todo ⚠️OUTDATED⚠️ do not
+///
+$qnorr-typescale-maps: (
+	mega: (
+      null: (32px, 48px),
+      sm:   (48px, 56px)
+   ),
+	kilo: (
+      null: (24px, 32px),
+      sm:   (32px, 48px)
+   ),
+	1: (
+      null: (20px, 24px),
+      sm:   (24px, 32px)
+   ),
+	2:    (
+      null: (16px, 24px),
+      sm:   (20px, 24px),
+   ),
+	3:    (16px, 24px),
+	4:    (14px, 20px),
+	5:    (12px, 14px),
+	6:    (10px, 12px),
+) !default;;
+
+
+/// @type List - Default font weights for generating utilties
+$qnorr-font-weights: (300, 400, 600, 700) !default;
