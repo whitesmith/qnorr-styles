@@ -22,18 +22,12 @@
 	 "scss/**/*.scss"
  ],
  "scripts": {
-  "dev": "node-sass -w --output-style expanded --source-map true --source-map-contents true --precision 6 scss/qnorr.scss dist/qnorr.css",
-  "build": "yarn run clean:dist && yarn run preprocess && yarn run postprocess",
-  "clean:dist": "rm -rf dist/*",
-  "preprocess": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 scss/qnorr.scss dist/qnorr.css",
-  "postprocess": "postcss 'dist/*.css' --replace && postcss 'dist/*.css' --o 'dist/qnorr.min.css' --env=production",
-  "dev:qnorr": "gulp dev",
-  "build:qnorr": "gulp",
-  "dev:playground": "rm -rf public/** && parcel site/index.html --out-dir public",
-  "build:playground": "rm -rf public/** && parcel build site/index.html --out-dir public --public-url ./",
-  "deploy:docs": "yarn run build:qnorr && node deploy.js",
-  "start": "yarn run dev:qnorr",
-  "build:all": "yarn run build:site &&  yarn run build:qnorr"
+  "qnorr:dev": "gulp dev",
+  "qnorr:build": "gulp",
+  "start": "yarn run qnorr:dev",
+  "docs:deploy": "yarn run build:qnorr && node deploy.js",
+  "playground:dev": "rm -rf public/** && parcel site/index.html --out-dir public",
+  "playground:build": "rm -rf public/** && parcel build site/index.html --out-dir public --public-url ./"
  },
  "devDependencies": {
   "@babel/core": "^7.2.2",
