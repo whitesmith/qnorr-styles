@@ -60,26 +60,21 @@ qnorr ships with two dependencies by default:
 - We use [gulp@4.0^](https://gulpjs.com/) to build the library (legacy CLI scripts are also available but they are way difficult to maintain).
 - We use [parcel](https://parceljs.org/) and [posthtml plugins](https://github.com/posthtml/posthtml) to build a basic site located under `/site` folder. If you want to help build a real documentation site, create a `docs` folder and let's use the monorepo approach — docs building are separated from library and we can use any tool to make it happen (vuepress, gitbook, etc.), suggestions are welcomed.
 
-Building
+Developing
 ```
 # watch mode for qnorr, dev server for demo site
 yarn run start
-
-# production build (lib and site)
-yarn run build:all
 ```
 
-Developing qnorr only
+Production build
 ```
-yarn run dev:qnorr
-yarn run build:qnorr
+# optimized output for publishing
+yarn run qnorr:build
 ```
 
-Developing demo site only
+Play at playground site
 ```
-yarn run dev:site
-yarn run build:site
-yarn run deploy:site
+yarn run playground:dev
 ```
 
 ## License
