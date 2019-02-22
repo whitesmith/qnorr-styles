@@ -94,7 +94,7 @@ Note: read more about [sass module dependency import issues here](https://github
 
 ## Developing
 
-- We use [gulp@4.0^](https://gulpjs.com/) to build the library (legacy CLI scripts are also available but they are way difficult to maintain).
+- We use [gulp@4.0^](https://gulpjs.com/) to build the framework.
 - We use [sassdoc](https://sassdoc.com/) to build and generate documentation `/docs` folder. Head to the site to learn how to use it, or just check any source file for an example, you'll get it super fast. A pretty custom theme is possible but let's leave it for version 2.
 - We use [parcel](https://parceljs.org/) and [posthtml plugins](https://github.com/posthtml/posthtml) to build a basic site located under `/site` folder so you can play around with the framework.
 
