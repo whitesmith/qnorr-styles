@@ -25,7 +25,7 @@
     "qnorr:dev": "gulp dev",
     "qnorr:build": "gulp",
     "start": "yarn run qnorr:dev",
-    "docs:deploy": "yarn run build:qnorr && node deploy.js",
+    "docs:deploy": "yarn run qnorr:build && node deploy.js",
     "playground:dev": "rm -rf public/** && parcel site/index.html --out-dir public",
     "playground:build": "rm -rf public/** && parcel build site/index.html --out-dir public --public-url ./"
   },
