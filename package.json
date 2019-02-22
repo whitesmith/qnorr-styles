@@ -17,6 +17,10 @@
  ],
  "main": "dist/qnorr.css",
  "style": "dist/qnorr.css",
+ "files": [
+	 "dist/*.{css,map}",
+	 "scss/**/*.scss"
+ ],
  "scripts": {
   "dev": "node-sass -w --output-style expanded --source-map true --source-map-contents true --precision 6 scss/qnorr.scss dist/qnorr.css",
   "build": "yarn run clean:dist && yarn run preprocess && yarn run postprocess",
@@ -36,6 +40,7 @@
   "@babel/preset-env": "^7.3.1",
   "@babel/register": "^7.0.0",
   "autoprefixer": "^9.4.7",
+  "browser-sync": "^2.26.3",
   "cssnano": "^4.1.8",
   "del": "^3.0.0",
   "gh-pages": "^2.0.1",
