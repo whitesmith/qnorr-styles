@@ -102,14 +102,20 @@
 /// @example scss - asd
 ///
 @mixin qnorr-grid-column-span($number-of-columns: 'auto') {
-   @if ($number-of-columns == 'auto' or $number-of-columns == null){
-      flex-grow: 1;
-      flex-shrink: 0;
-      flex-basis: auto;
-      max-width: 100%;
-   } @else {
-      flex: 0 0 percentage($number-of-columns / $qnorr-grid-columns-number);
-      width: percentage($number-of-columns / $qnorr-grid-columns-number);
-      max-width: percentage($number-of-columns / $qnorr-grid-columns-number);
-   }
+  @if type-of($number-of-columns) == number {
+    @if $number-of-columns > $qnorr-grid-columns-number {
+      @warn "Your're specifiyng more columns than exist in $qnorr-grid-columns-number: #{$qnorr-grid-columns-number}. This can lead to overflowing behaviour. Make sure you're using the correct number";
+    }
+  }
+
+  @if ($number-of-columns == 'auto' or $number-of-columns == null){
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+    max-width: 100%;
+  } @else {
+    flex: 0 0 percentage($number-of-columns / $qnorr-grid-columns-number);
+    width: percentage($number-of-columns / $qnorr-grid-columns-number);
+    max-width: percentage($number-of-columns / $qnorr-grid-columns-number);
+  }
 }

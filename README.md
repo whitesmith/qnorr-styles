@@ -1,68 +1,106 @@
-A style agnostic, slightly opinionated, style seasoning to bootstrap your projects.
-
-## install
-Install via `npm`.
-```shell
-yarn add @whitesmith/@whitesmith/qnorr-styles
-```
-## usage
-
-**at your `main.scss`**
-```scss
-@import "path/to/node_modules/@whitesmith/qnorr-styles/scss/qnorr";
-or if your using a bundler with alias for modules (webpack)
-@import "~@whitesmith/qnorr-styles/scss/qnorr"
-```
-
-**at your entry file `index.js`**
-```javascript
-import "@whitesmith/qnorr-styles"; // this will import qnorr.css from dist/qnorr.css
-
-// you can also import sass directly if your bunlder is configure to handle it
-import "@whitesmith/qnorr-styles/scss/qnorr.scss;
-
-const someJsFunction = _ => {
-	...
-}
-```
-
-### Documentation
+## Documentation
 
 > If it’s not documented, it doesn’t exist. Documentation should become the default – an integrated part of the development process.
 > — Miriam Suzanne
 
 [See full documentation](https://whitesmith.github.io/qnorr-styles/)
 
-### Customizing
-Choose your seasonings
-```scss
-// Required
-@import "~@whitesmith/qnorr-styles/scss/settings";
-@import "~@whitesmith/qnorr-styles/scss/tools";
+## install
+Install via `npm` or `yarn`.
 
-// optional external dependency
-@import "~normalize.css/normalize.css";
-// Optional (check all modules available at scss/** )
-@import "~@whitesmith/qnorr-styles/scss/base/reset";
-@import "~@whitesmith/qnorr-styles/scss/objects/media";
-@import "~@whitesmith/qnorr-styles/scss/utilties/spacers";
+```shell
+yarn add @whitesmith/qnorr-styles
+```
+
+
+## usage
+
+**at your `{main,index,app}.scss`**
+```scss
+@import "path/to/node_modules/@whitesmith/qnorr-styles/scss/qnorr";
+
+// or if your using a bundler with alias for node_modules (webpack / parcel)
+@import "~@whitesmith/qnorr-styles/scss/qnorr";
+
+// if your using node_sass and defined a custom importer or includePaths
+@import "@whitesmith/qnorr-styles/scss/qnorr";
+```
+
+**at your entry file `index.js`**
+```javascript
+import "@whitesmith/qnorr-styles"; // this will import qnorr.css from dist/qnorr.css
+```
+
+
+## Customizing
+Want a custom flavour? Go the sassy way.
+<div class="flash flash-warn">
+  _"~" is an alias path to `node_modules` and can be different in your system_
+</div>
+
+```scss
+////
+/// CONFIGURATION
+////
+
+// at your {main, index, app}.scss file all your config variables overrides;
+$qnorr-grid-columns-number: 10;
+
+// import settings to be overriden by the configuration above;
+@import "~@whitesmith/qnorr-styles/scss/settings";
+
+
+/////
+/// TOOLING
+///
+/// [1] - in perfect world this would also import qnorr-styles required dependencies
+/// (mappy-breakpoints), but we're not in a perfect world so check issue#10
+/// for why we decide to not include it by default for now
+///
+/// [2] - You can also import individual function and mixins, but then you have
+/// check their dependencies on documentation, since there's no output code
+/// it makes little sence to do it. It's possible. But not practical.
+////
+@import "~mappy-breakpoints/_mappy-breakpoints"; // [1] required
+@import "~@whitesmith/qnorr-styles/scss/tools"; //  [2] all functions and mixins
+
+
+////
+/// OOCSS MODULES
+///
+/// ready to use OOCSS elements, generated with your config
+/// [3] - Similar [1], not influenced by any configuration
+////
+
+@import "~normalize.css/normalize.css"; // [3]
+@import "~@whitesmith/qnorr-styles/scss/global/_g.resets";
+@import "~@whitesmith/qnorr-styles/scss/objects/_o.media";
+@import "~@whitesmith/qnorr-styles/scss/objects/_o.grid";
+@import "~@whitesmith/qnorr-styles/scss/objects/_o.skeleton";
+@import "~@whitesmith/qnorr-styles/scss/utilities/_u.spacers";
+@import "~@whitesmith/qnorr-styles/scss/utilities/_u.widths";
+@import "~@whitesmith/qnorr-styles/scss/utilities/_u.text";
 ```
 
 
 ## Dependencies
 qnorr ships with two dependencies by default:
-- [mappy-breakpoints](https://github.com/zellwk/mappy-breakpoints) to handle our media query needs (required, no-opt-out)
-- [normalize.css](https://github.com/necolas/normalize.css/) to reset browser styles (optional import if you're using scss verison)
+- [mappy-breakpoints (required)](https://github.com/zellwk/mappy-breakpoints) to handle our media query needs
+- [normalize.css (optional)](https://github.com/necolas/normalize.css/) to reset browser styles (optional import if you're using scss verison)
+
+Note: read more about [sass module dependency import issues here](https://github.com/whitesmith/qnorr-styles/issues/10);
+
 
 
 ## Developing
 
-- We use [gulp@4.0^](https://gulpjs.com/) to build the library (legacy CLI scripts are also available but they are way difficult to maintain).
-- We use [parcel](https://parceljs.org/) and [posthtml plugins](https://github.com/posthtml/posthtml) to build a basic site located under `/site` folder. If you want to help build a real documentation site, create a `docs` folder and let's use the monorepo approach — docs building are separated from library and we can use any tool to make it happen (vuepress, gitbook, etc.), suggestions are welcomed.
+- We use [gulp@4.0^](https://gulpjs.com/) to build the framework.
+- We use [sassdoc](https://sassdoc.com/) to build and generate documentation `/docs` folder. Head to the site to learn how to use it, or just check any source file for an example, you'll get it super fast. A pretty custom theme is possible but let's leave it for version 2.
+- We use [parcel](https://parceljs.org/) and [posthtml plugins](https://github.com/posthtml/posthtml) to build a basic site located under `/site` folder so you can play around with the framework.
 
 Developing
 ```
-# watch mode for qnorr, dev server for demo site
+# watch mode for qnorr will also start a server for documentation
 yarn run start
 ```
 

@@ -2,13 +2,12 @@
 /// The holy grail of layout reused patterns
 /// Figure + text + alignment
 ///
-/// @group GroupName
-/// @author AuthorName
+/// @group Tools
+/// @author Stubbornealla
 ///
 /// @link http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
 /// @todo naming, should we namespace o use more verbose media-object
 ////
-
 
 ///
 /// Creates the media object wrapper
@@ -27,9 +26,6 @@
 /// @param {Number} $space [$qnorr-pixel-grid-unit*2] - the space between
 ///   figure and content applied in the right direction if first or last
 ///   child
-///
-///
-///
 @mixin media-figure($space: $qnorr-pixel-grid-unit*2){
   display: flex;
   flex: none; //do not shrink by default
@@ -42,8 +38,6 @@
     margin-left: px-to-rem($space);
   }
 }
-
-
 
 
 ///

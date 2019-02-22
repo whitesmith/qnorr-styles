@@ -11,15 +11,9 @@
 /// @author Whitesmith
 /// @link https://github.com/whitesmith/qnorr-styles
 ///
-/// @todo [1] investigate why gulp-sass includePaths is
-/// not working and we have to ref node modules with
-/// this ugly paths
-///
-/// @todo [2] solving includePaths might actual break
-/// npm deploy because of dependencies might be loded by other bundlers
-/// although we can advise to not import qnorr.scss directly but only its
-/// modules, and import dependencies from node_modules directly
-/// think about it.
+/// @todo [1] watching sass developments on dynamic imports
+/// so we can specify configurable import paths to our dependencies
+/// https://github.com/whitesmith/qnorr-styles/issues/10
 ///
 ////
 
@@ -27,8 +21,8 @@
 // SETTINGS
 @import "settings/index";
 
-// TOOLS [2]
-@import "../node_modules/mappy-breakpoints/_mappy-breakpoints.scss"; //[1]
+// TOOLS
+@import "../node_modules/mappy-breakpoints/_mappy-breakpoints.scss"; // [1]
 @import "tools/index";
 
 /// GLOBAL
