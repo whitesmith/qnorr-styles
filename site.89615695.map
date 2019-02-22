@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.js"],"names":["console","log"],"mappings":";;;AACA,aADA,QAAA,gBACAA,QAAQC,IAAI","file":"site.89615695.map","sourceRoot":"../site","sourcesContent":["import \"./index.scss\";\nconsole.log('Hello worlasd');\n"]}
