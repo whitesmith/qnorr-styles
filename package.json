@@ -29,9 +29,9 @@
   "postprocess": "postcss 'dist/*.css' --replace && postcss 'dist/*.css' --o 'dist/qnorr.min.css' --env=production",
   "dev:qnorr": "gulp dev",
   "build:qnorr": "gulp",
-  "dev:site": "rm -rf public/** && parcel site/index.html --out-dir public",
-  "build:site": "rm -rf public/** && parcel build site/index.html --out-dir public --public-url ./",
-  "deploy:site": "yarn run build:site && node deploy.js",
+  "dev:playground": "rm -rf public/** && parcel site/index.html --out-dir public",
+  "build:playground": "rm -rf public/** && parcel build site/index.html --out-dir public --public-url ./",
+  "deploy:docs": "yarn run build:qnorr && node deploy.js",
   "start": "yarn run dev:qnorr",
   "build:all": "yarn run build:site &&  yarn run build:qnorr"
  },

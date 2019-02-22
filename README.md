@@ -75,11 +75,9 @@ yarn run dev:qnorr
 yarn run build:qnorr
 ```
 
-Developing demo site only
+Developing playground site
 ```
-yarn run dev:site
-yarn run build:site
-yarn run deploy:site
+yarn run dev:playground
 ```
 
 ## License
