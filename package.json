@@ -1,61 +1,61 @@
 {
- "name": "@whitesmith/qnorr-styles",
- "version": "0.2.0",
- "description": "A style agnostic, slightly opinionated, css framework  seasoning to bootstrap your projects",
- "repository": "git@github.com:whitesmith/qnorr-css.git",
- "author": "Whitesmith <info@whitesmith.co>",
- "license": "MIT",
- "keywords": [
-  "css",
-  "scss",
-  "sass",
-  "stylesheets",
-  "bootstrap",
-  "framework",
-  "oocss",
-  "functional css"
- ],
- "main": "dist/qnorr.css",
- "style": "dist/qnorr.css",
- "files": [
-	 "dist/*.{css,map}",
-	 "scss/**/*.scss"
- ],
- "scripts": {
-  "qnorr:dev": "gulp dev",
-  "qnorr:build": "gulp",
-  "start": "yarn run qnorr:dev",
-  "docs:deploy": "yarn run build:qnorr && node deploy.js",
-  "playground:dev": "rm -rf public/** && parcel site/index.html --out-dir public",
-  "playground:build": "rm -rf public/** && parcel build site/index.html --out-dir public --public-url ./"
- },
- "devDependencies": {
-  "@babel/core": "^7.2.2",
-  "@babel/preset-env": "^7.3.1",
-  "@babel/register": "^7.0.0",
-  "autoprefixer": "^9.4.7",
-  "browser-sync": "^2.26.3",
-  "cssnano": "^4.1.8",
-  "del": "^3.0.0",
-  "gh-pages": "^2.0.1",
-  "gulp": "^4.0.0",
-  "gulp-postcss": "^8.0.0",
-  "gulp-rename": "^1.4.0",
-  "gulp-sass": "^4.0.2",
-  "gulp-sourcemaps": "^2.6.4",
-  "node-sass": "^4.11.0",
-  "npm-run-all": "^4.1.5",
-  "parcel-bundler": "^1.11.0",
-  "postcss-cli": "^6.1.1",
-  "postcss-modules": "^1.4.1",
-  "posthtml-expressions": "^1.1.0",
-  "posthtml-extend": "^0.3.0",
-  "posthtml-modules": "^0.4.2",
-  "sass-module-importer": "^1.4.0",
-  "sassdoc": "^2.5.1"
- },
- "dependencies": {
-  "mappy-breakpoints": "^0.2.3",
-  "normalize.css": "^8.0.1"
- }
+  "name": "@whitesmith/qnorr-styles",
+  "version": "0.2.0",
+  "description": "A style agnostic, slightly opinionated, css framework  seasoning to bootstrap your projects",
+  "repository": "git@github.com:whitesmith/qnorr-css.git",
+  "author": "Whitesmith <info@whitesmith.co>",
+  "license": "MIT",
+  "keywords": [
+    "css",
+    "scss",
+    "sass",
+    "stylesheets",
+    "bootstrap",
+    "framework",
+    "oocss",
+    "functional css"
+  ],
+  "main": "dist/qnorr.css",
+  "style": "dist/qnorr.css",
+  "files": [
+    "dist/*.{css,map}",
+    "scss/**/*.scss"
+  ],
+  "scripts": {
+    "qnorr:dev": "gulp dev",
+    "qnorr:build": "gulp",
+    "start": "yarn run qnorr:dev",
+    "docs:deploy": "yarn run build:qnorr && node deploy.js",
+    "playground:dev": "rm -rf public/** && parcel site/index.html --out-dir public",
+    "playground:build": "rm -rf public/** && parcel build site/index.html --out-dir public --public-url ./"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/register": "^7.0.0",
+    "autoprefixer": "^9.4.7",
+    "browser-sync": "^2.26.3",
+    "cssnano": "^4.1.8",
+    "del": "^3.0.0",
+    "gh-pages": "^2.0.1",
+    "gulp": "^4.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "parcel-bundler": "^1.11.0",
+    "postcss-cli": "^6.1.1",
+    "postcss-modules": "^1.4.1",
+    "posthtml-expressions": "^1.1.0",
+    "posthtml-extend": "^0.3.0",
+    "posthtml-modules": "^0.4.2",
+    "sass-module-importer": "^1.4.0",
+    "sassdoc": "^2.5.1"
+  },
+  "dependencies": {
+    "mappy-breakpoints": "^0.2.3",
+    "normalize.css": "^8.0.1"
+  }
 }
