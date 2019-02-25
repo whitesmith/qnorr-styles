@@ -19,17 +19,20 @@
 ///  .selector { @include fluid-type(24px, 56px, 'sm', 'lg');
 ///
 @mixin fluid-type( $min-font-size, $max-font-size, $min-vw, $max-vw, $prop: "font-size") {
-  @if type-of($min-vw) == "string" {
-    $u1: unit(map-get($qnorr-breakpoints-map, $min-vw));
-    // reassing argument value to parsed one from map
-    $min-vw: map-get($qnorr-breakpoints-map, $min-vw)
+  $u1: null;
+  $u2: null;
+
+  @if type-of($min-vw) == "string" {
+    // re-assign argument passed as breakpoint key string to actual value
+    $min-vw: map-get($qnorr-breakpoints-map, $min-vw);
+    $u1: unit($min-vw);
   } @else {
     $u1: unit($min-vw);
   }
 
-  @if type-of($max-vw) == "string" {
-    $u2: unit(map-get($qnorr-breakpoins-map, $max-vw));
-    $min-vw: unit(map-get($qnorr-breakpoins-map, $max-vw));
+  @if type-of($max-vw) == "string" {
+    $max-vw: map-get($qnorr-breakpoints-map, $max-vw);
+    $u2: unit($max-vw);
   } @else {
     $u2: unit($max-vw);
   }
