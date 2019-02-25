@@ -4,21 +4,25 @@
 /// @group Tools
 /// @param {String} $path - Path to your font file (no extension)
 /// @param {String} $name ['Custom Font'] - Your font name
-///   (yes you should keep the original but it's not mandatory)
-/// @param {Number} $font-weight [400] - weight for this font file
-/// @param {*} $font-style [normal] - Italic
-/// @param {*} $font-display [swap] - Check link for more
-///   More info: https://codepen.io/elifitch/pen/Ljqway
-/// @param {*} $unicodde-range [U+000-5FF] -  Download only latin glyphs
+///   (yes you should keep the original, to make use of local but it's not mandatory)
+/// @param {Number} $font-weight [400] - (100...900)
+/// @param {String} $font-style [normal] - (Italic | Oblique | inherit | unset)
+/// @param {String} $font-display [swap] - how a font face is displayed based on whether and when it is downloaded and ready to use.
+/// @param {*} $unicode-range [U+000-5FF] - Download only latin glyphs
 ///
-/// @link https://equinsuocha.io/blog/web-fonts-in-2018
-///
-/// @example scss -
+/// @example markup - Preload your fonts (recommended, not required)
+///   <head>
+///     <link rel="preload" as="font" href="/fonts/your-web-font.woff2" type="font/woff2" crossorigin="anonymous">
+///   </head>
+/// @example scss - Including using font-face
 ///   @include font-face(
-///     $path: "/fonts/proxima-nova/proxima-nova-500",
-///     $name: "Proxima Nova"
+///     $path: "/fonts/your-web-font",
+///     $name: "Custom Font"
 ///     $weight: 500
 ///  )
+///
+/// @link https://equinsuocha.io/blog/web-fonts-in-2018
+/// @link https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display
 ///
 @mixin font-face(
   $path,
@@ -26,14 +30,14 @@
   $font-weight: 400,
   $font-style: normal,
   $font-display: swap,
-  $unicodde-range: U+000-5FF,
+  $unicode-range: U+000-5FF,
 ){
   @font-face {
     font-family: $name;
     font-weight: $font-weight;
     font-style: $font-style;
-    font-display: $font-style;
-    unicode-range: $unicodde-range;
+    font-display: $font-display;
+    unicode-range: $unicode-range;
     src: local($name),
          url("#{$path}.woff2") format("woff2"),
          url("#{$path}.woff") format("woff");
