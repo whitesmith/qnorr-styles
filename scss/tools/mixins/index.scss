@@ -2,16 +2,17 @@
 /// @name MIXINS
 ////
 
-@import "mx.browser-hacks";
-@import "mx.font-face";
-@import "mx.reset-appearance";
-@import "mx.input-placeholder";
-@import "mx.hidden-visually";
 @import "mx.bg-cover";
+@import "mx.browser-hacks";
 @import "mx.clearfix";
 @import "mx.expand-to-parent";
-@import "mx.rwd-font-size";
-@import "mx.wrap";
+@import "mx.fluid-type";
+@import "mx.font-face";
 @import "mx.grid";
-@import "mx.skeleton";
+@import "mx.hidden-visually";
+@import "mx.input-placeholder";
 @import "mx.media";
+@import "mx.reset-appearance";
+@import "mx.rwd-font-size";
+@import "mx.skeleton";
+@import "mx.wrap";
