@@ -11,9 +11,8 @@ $system-font-family: -apple-system, BlinkMacSystemFont,
 
 
 /// @type String
-$qnorr-font-family: $system-font-family !default;
-/// @type String
-$qnorr-primary-font-family: $qnorr-font-family !default; // [1];
+$qnorr-primary-font-family: $system-font-family !default; // [1];
+
 /// @type String
 $qnorr-monospace-font-family: Roboto Mono, Inconsolata, monospace !default;
 
