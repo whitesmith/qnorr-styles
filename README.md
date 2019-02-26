@@ -34,9 +34,20 @@ import "@whitesmith/qnorr-styles"; // this will import qnorr.css from dist/qnorr
 
 ## Customizing
 Want a custom flavour? Go the sassy way.
-<div class="flash flash-warn">
-  _"~" is an alias path to `node_modules` and can be different in your system_
-</div>
+<table bgcolor="#ffbb00">
+	<tr>
+		<td bgcolor="#ffbb00">
+			<font color="#000">
+				<b>NOTE</b>
+			</font>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#ffbb00">
+			<font color="#000">"~" is an alias path to `node_modules` and can be different in your system</font>
+		</td>
+	</tr>
+</table>
 
 ```scss
 ////
