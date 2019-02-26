@@ -66,5 +66,16 @@
 			"///"
 		],
 		"description": "Logs sassdoc variable comment"
+	},
+
+	"sassdoc hr": {
+		"scope": "sass,scss",
+		"prefix": "sassdoc:hr",
+		"body": [
+			"//-///////////////////////////////////////////////////////////////////",
+			"// ${1:header}",
+			"//-///////////////////////////////////////////////////////////////////"
+		],
+		"description": "Logs an ignored sassdoc 70 chars section separator"
 	}
 }

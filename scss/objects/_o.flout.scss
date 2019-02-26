@@ -1,0 +1,386 @@
+////
+/// Flout - Flex layout attribute to making quick flex layouts a breeze
+/// organized in a scoped data-attribute. first spotted on google product.
+///
+/// @group Objects
+/// @link https://github.com/StefanKovac/flex-layout-attribute Inspiration, FLA from Stefan Kovac
+////
+
+/// costumize breakpoints list
+/// @type Map [$qnorr-grid-breakpoints-list]
+$flout-breakpoints-list: $qnorr-grid-breakpoints-list !default;
+
+///
+/// 1. **Flag** — each attribute passed to data-flout/flitem
+/// 1. **Why the "`--`" suffix after each flag?**
+///   - Because we use contain selector (*=) and withtout the flag suffix,
+/// base flags styles would also be applied when only the breakpoint
+/// Flag was used. flag@bp contains flag, so flag styles would be applied.
+/// Check links for interactive explanation demo
+/// 1. **But you could use only one "`-`" to have the same effect**
+///   - yes but that looks like a typo, and two make it look intentional.
+/// 1. Also it's the inverse of css variables notation.
+///
+/// @type List
+/// @example markup - changing flow direction at breakpoints
+///   <div data-flout="col-- row@md-- row-reverse@lg--">
+///
+$flout-flags: (
+  "expand--",
+  "inline--",
+  "auto--",
+  "nowrap--",
+  "wrap-reverse--",
+  "row--",
+  "row-reverse--",
+  "col--",
+  "col-reverse--",
+  "match-height--",
+  "align-{start|center|end|baseline}--",
+  "align-content-{start|center|end|baseline}--",
+  "justify-{start|center|end|baseline}--",
+);
+
+
+///
+/// Applied to layout container
+/// Opinionated default. flex-wrap: wrap, because it's the most
+/// common usecase. See `$flout-flags` for accepted arguments
+///
+/// @requires {Mixin} mappy-breakpoints::mappy-breakpoints
+/// @example markup - Responsive flags, see $flout-flags for all available props
+///   <div data-flout="middle-- bottom@sm-- top@lg--"></div>
+///
+/// @see $flout-flags
+[data-flout] {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+//-///////////////////////////////////////////////////////////////////
+// LAYOUT FLOW
+//-///////////////////////////////////////////////////////////////////
+[data-flout*="expand--"]       { width: 100% }
+[data-flout*="auto--"]         { width: auto }
+[data-flout*="nowrap--"]       { flex-wrap: nowrap;}
+[data-flout*="wrap-reverse--"] { flex-wrap: wrap-reverse;}
+[data-flout*="row--"]          { flex-direction: row; }
+[data-flout*="row-reverse--"]  { flex-direction: row-reverse; }
+[data-flout*="col--"]          { flex-direction: column; }
+[data-flout*="col-reverse"]    { flex-direction: column-reverse; }
+[data-flout*="inline--"]       { display: inline-flex; }
+[data-flout*="match-height--"]{
+  align-items: stretch; //reset component current alignment
+
+  > * {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+//-///////////////////////////////////////////////////////////////////
+// ITEMS ALIGNMENT
+//-///////////////////////////////////////////////////////////////////
+[data-flout*="align-start--"]    { align-items: flex-start; }
+[data-flout*="align-center--"]   { align-items: center; }
+[data-flout*="align-bottom--"]   { align-items: flex-end; }
+[data-flout*="align-baseline--"] { align-items: baseline; }
+
+
+//-///////////////////////////////////////////////////////////////////
+// JUSTIFY CONTENT
+//-///////////////////////////////////////////////////////////////////
+[data-flout*="justify-start--"] { justify-content: flex-start; }
+[data-flout*="justify-center--"] { justify-content: center; }
+[data-flout*="justify-end--"] { justify-content: flex-end !important; }
+[data-flout*="justity-around--"] { justify-content: space-around; }
+[data-flout*="justify-between--"] { justify-content: space-between; }
+
+
+//-///////////////////////////////////////////////////////////////////
+// CONTENT ALIGNMENT (MULTILINE)
+//-///////////////////////////////////////////////////////////////////
+[data-flout*="content-start--"]   { align-content: flex-start; }
+[data-flout*="content-center--"]  { align-content: center; }
+[data-flout*="content-end--"]     { align-content: flex-end; }
+[data-flout*="content-around--"]  { align-content: space-around; }
+[data-flout*="content-between--"] { align-content: space-between; }
+
+
+//-///////////////////////////////////////////////////////////////////
+// RESPONSIVE MODIFIERS
+//-///////////////////////////////////////////////////////////////////
+@each $breakpoint in $flout-breakpoints-list{
+  @include mappy-bp($breakpoint){
+    [data-flout*="expand#{$qnorr-breakpoint-separator}#{$breakpoint}--"]       { width: 100% }
+    [data-flout*="auto#{$qnorr-breakpoint-separator}#{$breakpoint}--"]         { width: auto}
+    [data-flout*="nowrap#{$qnorr-breakpoint-separator}#{$breakpoint}--"]       { flex-wrap: nowrap;}
+    [data-flout*="wrap-reverse#{$qnorr-breakpoint-separator}#{$breakpoint}--"] { flex-wrap: wrap-reverse;}
+    [data-flout*="row#{$qnorr-breakpoint-separator}#{$breakpoint}--"]          { flex-direction: row; }
+    [data-flout*="row-reverse#{$qnorr-breakpoint-separator}#{$breakpoint}--"]  { flex-direction: row-reverse; }
+    [data-flout*="col#{$qnorr-breakpoint-separator}#{$breakpoint}--"]          { flex-direction: column; }
+    [data-flout*="col-reverse#{$qnorr-breakpoint-separator}#{$breakpoint}--"]  { flex-direction: column-reverse; }
+    [data-flout*="inline#{$qnorr-breakpoint-separator}#{$breakpoint}--"]       { display: inline-flex; }
+    [data-flout*="match-height#{$qnorr-breakpoint-separator}#{$breakpoint}--"] {
+      align-items: stretch; //reset component current alignment
+
+      > * {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    [data-flout*="align-start#{$qnorr-breakpoint-separator}#{$breakpoint}--"]     { align-items: flex-start;}
+    [data-flout*="align-center#{$qnorr-breakpoint-separator}#{$breakpoint}--"]    { align-items: center; }
+    [data-flout*="align-bottom#{$qnorr-breakpoint-separator}#{$breakpoint}--"]    { align-items: flex-end; }
+    [data-flout*="align-baseline#{$qnorr-breakpoint-separator}#{$breakpoint}--"]  { align-items: baseline; }
+    [data-flout*="content-start#{$qnorr-breakpoint-separator}#{$breakpoint}--"]   { align-content: flex-start; }
+    [data-flout*="content-center#{$qnorr-breakpoint-separator}#{$breakpoint}--"]  { align-content: center; }
+    [data-flout*="content-end#{$qnorr-breakpoint-separator}#{$breakpoint}--"]     { align-content: flex-end; }
+    [data-flout*="content-around#{$qnorr-breakpoint-separator}#{$breakpoint}--"]  { align-content: space-around; }
+    [data-flout*="content-between#{$qnorr-breakpoint-separator}#{$breakpoint}--"] { align-content: space-between; }
+    [data-flout*="justify-start#{$qnorr-breakpoint-separator}#{$breakpoint}--"]   { justify-content: flex-start; }
+    [data-flout*="justify-center#{$qnorr-breakpoint-separator}#{$breakpoint}--"]  { justify-content: center; }
+    [data-flout*="justify-end#{$qnorr-breakpoint-separator}#{$breakpoint}--"]     { justify-content: flex-end; }
+    [data-flout*="justify-around#{$qnorr-breakpoint-separator}#{$breakpoint}--"]  { justify-content: space-around; }
+    [data-flout*="justify-between#{$qnorr-breakpoint-separator}#{$breakpoint}--"] { justify-content: space-between; }
+  }
+}
+
+//-///////////////////////////////////////////////////////////////////
+// ITEM LEVEL OVERRIDES
+//-///////////////////////////////////////////////////////////////////
+
+
+///
+/// available data-flitem flags values
+///
+/// 1. **Flag** — each attribute passed to data-flout/flitem
+/// 1. **Why the "`--`" suffix after each flag?**
+///   - Because we use contain selector (*=) and withtout the flag suffix,
+/// base flags styles would also be applied when only the breakpoint
+/// Flag was used. flag@bp contains flag, so flag styles would be applied.
+/// Check links for interactive explanation demo
+/// 1. **But you could use only one "`-`" to have the same effect**
+///   - yes but that looks like a typo, and two make it look intentional.
+/// 1. Also it's the inverse of css variables notation.
+///
+/// @type List
+/// @example markup - overiding item alignment defined in parent
+///   <!-- justify-self doesn't exist to flex (only grid), but we can mimic it with auto-margins -->
+///   <div data-flout="justify-center--">
+///     <div>I will allways justify center</div>
+///     <div data-flitem="justify-end-- justify-center@md-- justify-start@lg--">
+///       I will override my parent alignment
+///     </div>
+///   </div>
+///
+$flitem-flags: (
+  "auto-width--",
+  "expand--",
+  "expand-auto--",
+  "expand-break--",
+  "grow--",
+  "!grow--",
+  "shrink--",
+  "!shrink--",
+  "justify-{start|center|end}-",
+  "first--",
+  "last--"
+);
+
+///
+/// Applied to flex layout children items
+/// Allows to apply specific styles to children, or override
+/// parent defined ones. some proertyes have negation values
+/// signed by the {!prop} notation.
+///
+/// @example markup - Responsive flags, see $flout-flags for all available props
+///   <div data-flout>
+///     <div data-fitem="end-- start@sm-- center@lg--"></div>
+///   </div>
+///
+/// @see $flitem-flags
+///
+[data-flitem] {
+  // docs only
+}
+
+
+//-///////////////////////////////////////////////////////////////////
+// SIZE
+//-///////////////////////////////////////////////////////////////////
+[data-flitem="auto-width--"]     { width: auto; flex: 0 0 auto }
+[data-flitem*="grow--"]          { flex-grow: 1 }
+[data-flitem*="shrink--"]        { flex-shrink: 1 }
+[data-flitem*="!grow--"]         { flex-grow: 0 }
+[data-flitem*="!shrink--"]       { flex-shrink: 0  }
+[data-flitem*="expand--"]        { flex: 1 0 0.000000000001px; min-width: 0px; min-height: 0px; }
+[data-flitem*="expand-auto--"]   { flex: 1 0 auto }
+[data-flitem*="expand-break--"]  { flex: 1 0 100% }
+[data-flitem*="none--"]          { flex: none;}
+
+
+//-///////////////////////////////////////////////////////////////////
+// ORDER
+//-///////////////////////////////////////////////////////////////////
+[data-flitem*="first--"] { order: -1; }
+[data-flitem*="last--"] { order: 9999 }
+
+
+//-///////////////////////////////////////////////////////////////////
+// ALIGNMENT
+//-///////////////////////////////////////////////////////////////////
+[data-flitem*="align-start--"]    { align-self: flex-start; }
+[data-flitem*="align-center--"]   { align-self: center; }
+[data-flitem*="align-end--"]      { align-self: flex-end; }
+[data-flitem*="align-baseline--"] { align-self: baseline; }
+[data-flitem*="align-stretch--"]  { align-self: stretch; height: auto }
+
+/// Justify-self property is ignored by flex layouts
+/// we can mimic some of it with auto-margins
+///
+/// @todo shy-right and shy-left were depreacted because of
+/// name being misleading with diferent flow directions
+/// @todo should we hande direction:rtl via dir attribute?
+/// @todo inital should be unset, but not supported by all browsers
+///
+
+[data-flitem*="justify"]{
+  // documentation only
+}
+
+// override direction based on parent flow
+[data-flitem*="justify-start--"] {
+  margin-right: auto;
+
+  // invert if direction opposite
+  [data-flout*="row-reverse--"] & {
+    margin-right: initial;
+    margin-left: auto;
+  }
+
+  [data-flout*="col--"] & {
+    margin-right: initial;
+    margin-bottom: auto;
+  }
+
+  [data-flout*="col-reverse--"] & {
+    margin-right: initial;
+    margin-top: auto;
+  }
+}
+
+// override direction based on parent flow
+[data-flitem*="justify-end--"] {
+  margin-left: auto;
+
+  [data-flout*="row-reverse--"] & {
+    margin-left: initial;
+    margin-right: auto;
+  }
+
+  [data-flout*="col--"] & {
+    margin-left: initial;
+    margin-top: auto;
+  }
+
+  [data-flout*="col-reverse--"] & {
+    margin-left: initial;
+    margin-bottom: auto;
+  }
+}
+
+// center with auto margins
+[data-flitem*="justify-center--"] {
+  margin-right: auto;
+  margin-left: auto;
+
+  [data-flout*="col--"] & {
+    margin-right: initial;
+    margin-left: initial;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}
+
+
+//-///////////////////////////////////////////////////////////////////
+// RESPONVIE FLITEM MODIFIERS
+//-///////////////////////////////////////////////////////////////////
+@each $breakpoint in $flout-breakpoints-list{
+  @include mappy-bp($breakpoint){
+    [data-flitem*="first#{$qnorr-breakpoint-separator}#{$breakpoint}--"]          { order: -1; }
+    [data-flitem*="last#{$qnorr-breakpoint-separator}#{$breakpoint}--"]           { order: 9999 }
+    [data-flitem*="align-start#{$qnorr-breakpoint-separator}#{$breakpoint}--"]    { align-self: flex-start; }
+    [data-flitem*="align-center#{$qnorr-breakpoint-separator}#{$breakpoint}--"]   { align-self: center; }
+    [data-flitem*="align-end#{$qnorr-breakpoint-separator}#{$breakpoint}--"]      { align-self: flex-end; }
+    [data-flitem*="align-baseline#{$qnorr-breakpoint-separator}#{$breakpoint}--"] { align-self: baseline; }
+    [data-flitem*="align-stretch#{$qnorr-breakpoint-separator}#{$breakpoint}--"]  { align-self: stretch; height: auto !important; }
+    [data-flitem*="auto-width#{$qnorr-breakpoint-separator}#{$breakpoint}--"]           { width: auto; flex: 0 0 auto; }
+    [data-flitem*="grow#{$qnorr-breakpoint-separator}#{$breakpoint}--"]           { flex-grow: 1; }
+    [data-flitem*="shrink#{$qnorr-breakpoint-separator}#{$breakpoint}--"]         { flex-shrink: 1; }
+    [data-flitem*="!grow#{$qnorr-breakpoint-separator}#{$breakpoint}--"]          { flex-grow: 0    }
+    [data-flitem*="!shrink#{$qnorr-breakpoint-separator}#{$breakpoint}--"]        { flex-shrink: 0  }
+    [data-flitem*="expand#{$qnorr-breakpoint-separator}#{$breakpoint}--"]         { flex: 1 0 0.000000000001px; min-width: 0px; min-height: 0px}
+    [data-flitem*="expand-auto#{$qnorr-breakpoint-separator}#{$breakpoint}--"]    { flex: 1 0 auto; }
+    [data-flitem*="expand-break#{$qnorr-breakpoint-separator}#{$breakpoint}--"]   { flex: 1 0 100% }
+    [data-flitem*="none#{$qnorr-breakpoint-separator}#{$breakpoint}--"]           { flex: none }
+    // START
+    [data-flitem*="justify-start#{$qnorr-breakpoint-separator}#{$breakpoint}--"]  {
+      margin-right: auto;
+
+      // invert if direction opposite
+      [data-flout*="row-reverse"] & {
+        margin-right: initial;
+        margin-left: auto;
+      }
+
+      [data-flout*="col"] & {
+        margin-right: initial;
+        margin-bottom: auto;
+      }
+
+      [data-flout*="col-reverse"] & {
+        margin-right: initial;
+        margin-top: auto;
+      }
+    }
+
+    // END
+    [data-flitem*="justify-end#{$qnorr-breakpoint-separator}#{$breakpoint}--"]{
+      margin-left: auto;
+
+      [data-flout*="row-reverse"] & {
+        margin-left: initial;
+        margin-right: auto;
+      }
+
+      [data-flout*="col"] & {
+        margin-left: initial;
+        margin-top: auto;
+      }
+
+      [data-flout*="col-reverse#{$qnorr-breakpoint-separator}#{$breakpoint}--"] & {
+        margin-right: initial;
+        margin-bottom: auto;
+      }
+    }
+
+    // CENTER
+    [data-flitem*="justify-center#{$qnorr-breakpoint-separator}#{$breakpoint}--"] {
+      margin-right: auto;
+      margin-left: auto;
+
+      [data-flout*="col"] & {
+        margin-left: initial;
+        margin-right: initial;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
+  }
+}
