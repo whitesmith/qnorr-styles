@@ -2,15 +2,28 @@
 /// Returns color value for a specic color name and tone
 ///
 /// @group Tools
-/// @param {Color} $color - Color
-/// @return {String} color hex code value
+/// @param {Sring} $color - color name identifier (used as key in map)
+/// @param {Number} $tone [500] - color tone, using 100 - 900 notation
+/// @param {Map} $map [$qnorr-color-maps] - Color map to search.
+/// @return {Color} color
+/// 
+/// @example scss - color map accepted formats [color, key:color list]
+///   $my-color-map: (
+///     colorNameKey: color,
+///     otherColor: (
+///       100: color,
+///       200: color
+///       ...
+///       900: color
+///     )
+///   );
 ///
-@function get-color($color, $tone: 500) {
-  @if map-has-key($qnorr-color-maps, $color) {
-    @if (type-of(map-get($qnorr-color-maps, $color)) == 'color' )  {
-      @return map-get($qnorr-color-maps, $color);
+@function get-color($color, $tone: 500, $map: $qnorr-color-maps) {
+  @if map-has-key($map, $color) {
+    @if (type-of(map-get($map, $color)) == 'color' )  {
+      @return map-get($map, $color);
     } @else {
-      @return map-deep-get($qnorr-color-maps, $color, $tone); // it's a map, get tone
+      @return map-deep-get($map, $color, $tone); // it's a map, get tone
     }
   }
 
