@@ -52,7 +52,7 @@
     "posthtml-extend": "^0.3.0",
     "posthtml-modules": "^0.4.2",
     "sass-module-importer": "^1.4.0",
-    "sassdoc": "^2.5.1"
+    "sassdoc": "^2.7.0"
   },
   "dependencies": {
     "mappy-breakpoints": "^0.2.3",
