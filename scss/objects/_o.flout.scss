@@ -198,6 +198,14 @@ $flitem-flags: (
 /// parent defined ones. some proertyes have negation values
 /// signed by the {!prop} notation.
 ///
+/// [Justify-self] property is ignored by flex layouts
+/// we can mimic some of it with auto-margins
+///
+/// @todo shy-right and shy-left were depreacted because of
+/// name being misleading with diferent flow directions
+/// @todo should we hande direction:rtl via dir attribute?
+/// @todo inital should be unset, but not supported by all browsers
+///
 /// @example markup - Responsive flags, see $flout-flags for all available props
 ///   <div data-flout>
 ///     <div data-fitem="end-- start@sm-- center@lg--"></div>
@@ -239,19 +247,6 @@ $flitem-flags: (
 [data-flitem*="align-end--"]      { align-self: flex-end; }
 [data-flitem*="align-baseline--"] { align-self: baseline; }
 [data-flitem*="align-stretch--"]  { align-self: stretch; height: auto }
-
-/// Justify-self property is ignored by flex layouts
-/// we can mimic some of it with auto-margins
-///
-/// @todo shy-right and shy-left were depreacted because of
-/// name being misleading with diferent flow directions
-/// @todo should we hande direction:rtl via dir attribute?
-/// @todo inital should be unset, but not supported by all browsers
-///
-
-[data-flitem*="justify"]{
-  // documentation only
-}
 
 // override direction based on parent flow
 [data-flitem*="justify-start--"] {
