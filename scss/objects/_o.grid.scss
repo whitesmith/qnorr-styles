@@ -38,7 +38,8 @@
 .o-grid--flush-gutters {
   margin-left: 0;
 
-  & > .o-grid__column {
+  > .o-grid__column,
+  > .o-grid__col {
     padding-left: 0;
     margin-bottom: 0
   }
@@ -46,7 +47,8 @@
 
 /// remove only bottom gutter spacing from columns
 .o-grid--flush-bottom-gutters {
-  & > .o-grid__column {
+  > .o-grid__column,
+  > .o-grid__col {
     margin-bottom: 0px;
   }
 }
@@ -57,7 +59,8 @@
 .o-grid--fixed-small-gutter{
   margin-left: -(px-to-rem(8px)) !important;
 
-  .o-grid__column {
+  > .o-grid__column,
+  > .o-grid__col {
     padding-left: px-to-rem(8px) !important;
   }
 }
@@ -67,7 +70,8 @@
   .o-grid--fix-gutter-#{$qnorr-breakpoint-separator}#{$bp}-size {
     margin-left: -(px-to-rem($gutter));
 
-    > .o-grid__column {
+    > .o-grid__column,
+    > .o-grid__col {
       padding-left: px-to-rem($gutter);
     }
   }
@@ -79,7 +83,8 @@
 
 /// make columns flex, good for equal height columns
 .o-grid--flex-columns {
-  > .o-grid__columns {
+  > .o-grid__columns,
+  > .o-grid__col {
     display: flex;
     flex-direction: column;
   }
@@ -87,7 +92,8 @@
 
 /// remove default "expand to fit" flex mode
 .o-grid--auto-width-columns {
-  > .o-grid__column {
+  > .o-grid__column,
+  > .o-grid__col {
     flex-grow: 0;
   }
 }

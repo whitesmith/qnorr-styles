@@ -636,43 +636,52 @@ body {
 
 .o-grid--flush-gutters {
   margin-left: 0; }
-  .o-grid--flush-gutters > .o-grid__column {
+  .o-grid--flush-gutters > .o-grid__column,
+  .o-grid--flush-gutters > .o-grid__col {
     padding-left: 0;
     margin-bottom: 0; }
 
-.o-grid--flush-bottom-gutters > .o-grid__column {
+.o-grid--flush-bottom-gutters > .o-grid__column,
+.o-grid--flush-bottom-gutters > .o-grid__col {
   margin-bottom: 0px; }
 
 .o-grid--fixed-small-gutter {
   margin-left: -0.5rem !important; }
-  .o-grid--fixed-small-gutter .o-grid__column {
+  .o-grid--fixed-small-gutter > .o-grid__column,
+  .o-grid--fixed-small-gutter > .o-grid__col {
     padding-left: 0.5rem !important; }
 
 .o-grid--fix-gutter-\@-size {
   margin-left: -0.5rem; }
-  .o-grid--fix-gutter-\@-size > .o-grid__column {
+  .o-grid--fix-gutter-\@-size > .o-grid__column,
+  .o-grid--fix-gutter-\@-size > .o-grid__col {
     padding-left: 0.5rem; }
 
 .o-grid--fix-gutter-\@xs-size {
   margin-left: -1rem; }
-  .o-grid--fix-gutter-\@xs-size > .o-grid__column {
+  .o-grid--fix-gutter-\@xs-size > .o-grid__column,
+  .o-grid--fix-gutter-\@xs-size > .o-grid__col {
     padding-left: 1rem; }
 
 .o-grid--fix-gutter-\@sm-size {
   margin-left: -1.5rem; }
-  .o-grid--fix-gutter-\@sm-size > .o-grid__column {
+  .o-grid--fix-gutter-\@sm-size > .o-grid__column,
+  .o-grid--fix-gutter-\@sm-size > .o-grid__col {
     padding-left: 1.5rem; }
 
 .o-grid--fix-gutter-\@lg-size {
   margin-left: -2rem; }
-  .o-grid--fix-gutter-\@lg-size > .o-grid__column {
+  .o-grid--fix-gutter-\@lg-size > .o-grid__column,
+  .o-grid--fix-gutter-\@lg-size > .o-grid__col {
     padding-left: 2rem; }
 
-.o-grid--flex-columns > .o-grid__columns {
+.o-grid--flex-columns > .o-grid__columns,
+.o-grid--flex-columns > .o-grid__col {
   display: flex;
   flex-direction: column; }
 
-.o-grid--auto-width-columns > .o-grid__column {
+.o-grid--auto-width-columns > .o-grid__column,
+.o-grid--auto-width-columns > .o-grid__col {
   flex-grow: 0; }
 
 .o-media {
