@@ -16,11 +16,13 @@
 ///     <link rel="preload" as="font" href="/fonts/your-web-font.woff2" type="font/woff2" crossorigin="anonymous">
 ///   </head>
 /// @example scss - Including using font-face
+///   // note: for other font weights you use the same name!
 ///   @include font-face(
 ///     $path: "/fonts/your-web-font",
-///     $name: "Custom Font"
-///     $weight: 500
-///  )
+///     $name: "Custom Font",
+///     $font-weight: 500,
+///     $font-style: normal
+///  );
 ///
 /// @link https://equinsuocha.io/blog/web-fonts-in-2018
 /// @link https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display
