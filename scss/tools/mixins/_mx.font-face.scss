@@ -1,10 +1,11 @@
 ///
-/// Outputs a modern css font-face declaration
+/// Outputs a modern css font-face declaration. local() declaration
+/// is opinionately out of the src property, because of its faulty nature.
 ///
 /// @group Tools
 /// @param {String} $path - Path to your font file (no extension)
-/// @param {String} $name ['Custom Font'] - Your font name
-///   (yes you should keep the original, to make use of local but it's not mandatory)
+/// @param {String} $name - Your font name or alias (up to you)
+/// @param {String|Number} $font-stretch [normal] - https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch
 /// @param {Number} $font-weight [400] - (100...900)
 /// @param {String} $font-style [normal] - (Italic | Oblique | inherit | unset)
 /// @param {String} $font-display [swap] - how a font face is displayed based on whether and when it is downloaded and ready to use.
@@ -15,19 +16,24 @@
 ///     <link rel="preload" as="font" href="/fonts/your-web-font.woff2" type="font/woff2" crossorigin="anonymous">
 ///   </head>
 /// @example scss - Including using font-face
+///   // note: for other font weights you use the same name!
 ///   @include font-face(
 ///     $path: "/fonts/your-web-font",
-///     $name: "Custom Font"
-///     $weight: 500
-///  )
+///     $name: "Custom Font",
+///     $font-weight: 500,
+///     $font-style: normal
+///  );
 ///
 /// @link https://equinsuocha.io/blog/web-fonts-in-2018
 /// @link https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display
+/// @link https://www.bramstein.com/writing/web-font-anti-patterns-local-fonts.html
+/// @link https://gist.github.com/renatodeleao/bc9327daf1d1dcd057da1026c03ba406 - if you want local declaration
 ///
 @mixin font-face(
   $path,
-  $name: "Custom Font",
+  $name,
   $font-weight: 400,
+  $font-stretch: normal,
   $font-style: normal,
   $font-display: swap,
   $unicode-range: U+000-5FF,
@@ -35,11 +41,11 @@
   @font-face {
     font-family: $name;
     font-weight: $font-weight;
+    font-stretch: $font-stretch;
     font-style: $font-style;
     font-display: $font-display;
     unicode-range: $unicode-range;
-    src: local($name),
-         url("#{$path}.woff2") format("woff2"),
+    src: url("#{$path}.woff2") format("woff2"),
          url("#{$path}.woff") format("woff");
   }
 }
