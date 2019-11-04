@@ -1,5 +1,6 @@
 ///
-/// Outputs a modern css font-face declaration
+/// Outputs a modern css font-face declaration. local() declaration
+/// is opinionately out of the src property, because of its faulty nature.
 ///
 /// @group Tools
 /// @param {String} $path - Path to your font file (no extension)
@@ -23,6 +24,8 @@
 ///
 /// @link https://equinsuocha.io/blog/web-fonts-in-2018
 /// @link https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display
+/// @link https://www.bramstein.com/writing/web-font-anti-patterns-local-fonts.html
+/// @link https://gist.github.com/renatodeleao/bc9327daf1d1dcd057da1026c03ba406 - if you want local declaration
 ///
 @mixin font-face(
   $path,
@@ -38,8 +41,7 @@
     font-style: $font-style;
     font-display: $font-display;
     unicode-range: $unicode-range;
-    src: local($name),
-         url("#{$path}.woff2") format("woff2"),
+    src: url("#{$path}.woff2") format("woff2"),
          url("#{$path}.woff") format("woff");
   }
 }
