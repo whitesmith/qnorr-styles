@@ -5,6 +5,7 @@
 /// @group Tools
 /// @param {String} $path - Path to your font file (no extension)
 /// @param {String} $name - Your font name or alias (up to you)
+/// @param {String|Number} $font-stretch [normal] - https://developer.mozilla.org/en-US/docs/Web/CSS/font-stretch
 /// @param {Number} $font-weight [400] - (100...900)
 /// @param {String} $font-style [normal] - (Italic | Oblique | inherit | unset)
 /// @param {String} $font-display [swap] - how a font face is displayed based on whether and when it is downloaded and ready to use.
@@ -30,6 +31,7 @@
   $path,
   $name,
   $font-weight: 400,
+  $font-stretch: normal,
   $font-style: normal,
   $font-display: swap,
   $unicode-range: U+000-5FF,
@@ -37,6 +39,7 @@
   @font-face {
     font-family: $name;
     font-weight: $font-weight;
+    font-stretch: $font-stretch;
     font-style: $font-style;
     font-display: $font-display;
     unicode-range: $unicode-range;
