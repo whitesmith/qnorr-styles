@@ -1,0 +1,70 @@
+@import "true";
+@import "../_mx.skeleton";
+
+@include describe("skeleton()") {
+  @include it("Returns properties for wrapper element") {
+    @include assert {
+      @include output {
+        @include skeleton();
+      }
+      @include expect {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+      }
+    }
+  }
+}
+
+@include describe("skeleton-tip()") {
+  @include it("Returns property to prevent shrinkage") {
+    @include assert {
+      @include output {
+        @include skeleton-tip();
+      }
+      @include expect {
+        flex: none;
+      }
+    }
+  }
+}
+
+@include describe("skeleton-body()") {
+  @include it("Returns skeleton body properties") {
+    @include assert {
+      @include output {
+        @include skeleton-body();
+      }
+      @include expect {
+        position: relative;
+        width: 100%;
+        flex: 1 0 auto;
+      }
+    }
+  }
+  @include it("Returns scrollable skeleton body properties") {
+    @include assert {
+      @include output {
+        @include skeleton-body($scrollable: true);
+      }
+      @include expect {
+        position: relative;
+        flex: 1 0 0.000000000001px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+  }
+  @include it("Returns auto scrollable skeleton body properties") {
+    @include assert {
+      @include output {
+        @include skeleton-body($scrollable: "auto");
+      }
+      @include contains {
+        width: auto;
+      }
+    }
+  }
+}

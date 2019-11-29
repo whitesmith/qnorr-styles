@@ -1,0 +1,69 @@
+@import "true";
+@import "../../../settings/index";
+@import "../_mx.media";
+
+@include describe("media()") {
+  @include it("Returns properties for a media wrapper") {
+    @include assert {
+      @include output {
+        @include media();
+      }
+      @include expect {
+        position: relative;
+        z-index: 2;
+        display: flex;
+      }
+    }
+  }
+}
+
+@include describe("media-figure()") {
+  @include it("Returns properties for a media figure") {
+    @include assert {
+      @include output {
+        @include media-figure();
+      }
+      @include expect {
+        display: flex;
+        flex: none;
+        &:first-child {
+          margin-right: px-to-rem(16px);
+        }
+        &:last-child {
+          margin-left: px-to-rem(16px);
+        }
+      }
+    }
+  }
+  @include it("Returns properties for a media figure with custom spacing") {
+    @include assert {
+      @include output {
+        @include media-figure(20px);
+      }
+      @include expect {
+        display: flex;
+        flex: none;
+        &:first-child {
+          margin-right: px-to-rem(20px);
+        }
+        &:last-child {
+          margin-left: px-to-rem(20px);
+        }
+      }
+    }
+  }
+}
+
+@include describe("media-body()") {
+  @include it("Returns properties for a media body") {
+    @include assert {
+      @include output {
+        @include media-body();
+      }
+      @include expect {
+        flex: 1 0 0.000000000001px;
+        min-width: 0px;
+      }
+    }
+  }
+}
