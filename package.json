@@ -61,5 +61,8 @@
   "dependencies": {
     "mappy-breakpoints": "^0.2.3",
     "normalize.css": "^8.0.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
