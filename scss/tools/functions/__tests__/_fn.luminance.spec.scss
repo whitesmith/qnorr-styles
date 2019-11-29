@@ -4,6 +4,6 @@
 
 @include describe("luminance()") {
   @include it("Returns luminance of color") {
-    @include assert-equal(luminance(#555), 0.04987, $inspect: true);
+    @include assert-equal(luminance(#555), 0.0908417112, $inspect: true);
   }
 }
