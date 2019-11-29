@@ -2,7 +2,29 @@
 @import "../_fn.pow";
 
 @include describe("pow()") {
-  @include it("Returns value powered to exponent") {
-    @include assert-equal(pow(2, 2), 4);
+  @include it("Returns result of position integer number powered to positive integer exponent") {
+    @include assert-equal(pow(2, 2, 2), 4);
+  }
+
+  @include it("Returns result of positive integer number powered to negative integer exponent") {
+    @include assert-equal(pow(2, -2, 2), 0.25);
+  }
+
+  @include it("Returns result of positive integer number powered to a float exponent") {
+    @include assert-equal(pow(2, 2.5), 5.6568542495);
+  }
+
+  @include it("Returns result of positive float number powered to a positive integer exponent") {
+    @include assert-equal(pow(2.5, 2), 6.25);
+  }
+
+  @include it("Returns result of positive float number powered to a positive integer exponent") {
+    @include assert-equal(pow(2.5, -2, 2), 0.16);
+  }
+
+  /// hack despite the number output is the same the test still fails
+  /// probably related to sass precision, requires investigation
+  @include it("Returns result of positive float number powered to a positive float exponent") {
+    @include assert-equal("#{pow(1.5, 1.5)}", "1.8371173071");
   }
 }

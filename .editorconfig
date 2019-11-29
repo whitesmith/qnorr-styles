@@ -16,6 +16,7 @@ trim_trailing_whitespace = false
 # Matches multiple files with brace expansion notation
 # Set default charset
 [*.{js,py,sass,scss,css}]
+indent_style = space
 charset = utf-8
 
 [*.{scss,css,sass}]
