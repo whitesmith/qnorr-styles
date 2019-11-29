@@ -36,13 +36,13 @@
 
 
 ///
-/// Create a contianer for grid columns
+/// Create a container for grid columns
 ///
 /// @require {mixin} qnorr-grid-gutters
 ///
 /// @param {Boolean} $flush [false] - remove gutter offset
 /// @param {Map} $breakpoint-map [$qnorr-grid-gutter-map]
-/// @output flex css to accomodate grid-columns
+/// @output flex css to accommodate grid-columns
 ///
 @mixin qnorr-grid($flush: false, $breakpoint-map: $qnorr-grid-gutter-map){
   position: relative;
