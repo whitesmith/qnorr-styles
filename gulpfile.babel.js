@@ -11,6 +11,8 @@ import sassdoc from "sassdoc"
 import moduleImporter from 'sass-module-importer';
 import browserSync from 'browser-sync';
 
+scss.compiler = require('sass');
+
 const server = browserSync.create();
 const paths = {
 	scss: {
