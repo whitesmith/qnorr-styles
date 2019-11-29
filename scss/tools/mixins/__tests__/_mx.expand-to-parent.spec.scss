@@ -1,0 +1,29 @@
+@import "true";
+@import "../_mx.expand-to-parent";
+
+@include describe("expand-to-parent()") {
+  @include it("Returns properties to stretch element to parent size") {
+    @include assert {
+      @include output {
+        @include expand-to-parent();
+      }
+      @include expect {
+        display: block;
+        width: 100%;
+        height: 100%;
+        top:0;
+        left:0;
+      }
+    }
+  }
+  @include it("Returns extra property if pseudo param is true") {
+    @include assert {
+      @include output {
+        @include expand-to-parent(true);
+      }
+      @include contains {
+        content: " ";
+      }
+    }
+  }
+}

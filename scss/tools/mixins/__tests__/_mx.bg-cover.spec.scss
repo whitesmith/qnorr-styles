@@ -1,0 +1,29 @@
+@import "true";
+@import "../_mx.bg-cover";
+
+@include describe("bg-cover()") {
+  @include it(
+    "Returns background cover properties with default position center"
+  ) {
+    @include assert {
+      @include output {
+        @include bg-cover();
+      }
+      @include expect {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+  @include it("Returns background cover properties with param position") {
+    @include assert {
+      @include output {
+        @include bg-cover(100% 0%);
+      }
+      @include contains {
+        background-position: 100% 0%;
+      }
+    }
+  }
+}
