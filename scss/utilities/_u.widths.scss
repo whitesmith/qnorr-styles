@@ -20,7 +20,7 @@
   }
 
   .u-pull-#{$i}\/#{$qnorr-grid-columns-number},
-  .u-pull-#{$i} {
+  .u-pull-#{$i} {
      margin-left: - $widthCalc;
   }
 }
