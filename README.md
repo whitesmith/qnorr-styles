@@ -1,3 +1,23 @@
+
+<h1 align="center">
+qnorr
+</h1>
+
+<p align="center">
+A style agnostic sass seasoning framework to bootstrap your projects
+<br />
+<br />
+
+<a href="https://www.npmjs.com/package/@whitesmith/qnorr-styles">
+  <img src="https://img.shields.io/npm/v/@whitesmith/qnorr-styles?color=%23ffbc05&logo=asdad&style=for-the-badge" alt="npm version">
+</a>
+
+<img src="https://img.shields.io/github/license/whitesmith/qnorr-styles?style=for-the-badge" alt="license">
+
+</p>
+
+---
+
 ## Documentation
 
 > If it’s not documented, it doesn’t exist. Documentation should become the default – an integrated part of the development process.
