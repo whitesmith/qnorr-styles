@@ -12,10 +12,18 @@ Install via `npm` or `yarn`.
 yarn add @whitesmith/qnorr-styles
 ```
 
+Alternatively you can add the built version straight into you pages head
+
+```html
+<!-- replace x.x.x per your current version -->
+<link rel="stylesheet" href="https://unpkg.com/@whitesmith/qnorr-styles@x.x.x/dist/qnorr.min.css">
+``` 
+
 
 ## usage
+If you've installed the package as module then **at your `{main,index,app}.scss`** 
 
-**at your `{main,index,app}.scss`**
+
 ```scss
 @import "path/to/node_modules/@whitesmith/qnorr-styles/scss/qnorr";
 
