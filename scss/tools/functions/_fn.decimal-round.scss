@@ -32,6 +32,8 @@
     @for $i from 1 through $digits {
         $n: $n * 10;
     }
+    // if $digits is 0 the loop above will loop once from 1 to 0
+    @if $digits == 0 { $n: 1 }
     @if $mode == round {
         @return round($number * $n) / $n;
     } @else if $mode == ceil {

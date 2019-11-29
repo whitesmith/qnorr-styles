@@ -1,0 +1,74 @@
+@import "true";
+@import "../_mx.browser-hacks";
+
+@include describe("for-modern-IE()") {
+  @include it("Returns media query for IE 10 and 11") {
+    @include assert {
+      @include output {
+        @include for-modern-IE {
+          font-size: 10px;
+        }
+      }
+      @include expect {
+        @media screen and (-ms-high-contrast: active),
+          (-ms-high-contrast: none) {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+}
+
+@include describe("for-edge()") {
+  @include it("Returns media query for Edge browser 15+") {
+    @include assert {
+      @include output {
+        @include for-edge {
+          height: 100%;
+        }
+      }
+      @include expect {
+        @supports (-ms-ime-align: auto) {
+          height: 100%;
+        }
+      }
+    }
+  }
+}
+
+@include describe("for-safari()") {
+  @include it("Returns media query for safari") {
+    @include assert {
+      @include output {
+        @include for-safari {
+          font-size: 16px;
+        }
+      }
+      @include expect {
+        @supports (-webkit-marquee-repetition: infinite) and (object-fit: fill) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+@include describe("for-safari-10()") {
+  @include it("Returns media query for safari-10") {
+    @include assert {
+      @include output {
+        @include for-safari-10 {
+          font-size: 12px;
+        }
+      }
+      @include expect {
+        @media not all and (min-resolution: 0.001dpcm) {
+          @supports (-webkit-appearance: none) and
+            (not (stroke-color: transparent)) {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}

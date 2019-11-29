@@ -1,0 +1,167 @@
+@import "true";
+@import "../../../settings/index";
+@import "node_modules/mappy-breakpoints/_mappy-breakpoints";
+@import "../_mx.grid";
+
+@include describe("qnorr-grid-gutters()") {
+  @include it("Returns grid gutters") {
+    @include assert {
+      @include output {
+        @include qnorr-grid-gutters();
+      }
+      @include expect {
+        padding-left: px-to-rem(8px);
+        @media all and (min-width: 30em) {
+          padding-left: px-to-rem(16px);
+        }
+        @media all and (min-width: 48em) {
+          padding-left: px-to-rem(24px);
+        }
+        @media all and (min-width: 80em) {
+          padding-left: px-to-rem(32px);
+        }
+      }
+    }
+  }
+  @include it("Returns custom property grid gutters") {
+    @include assert {
+      @include output {
+        @include qnorr-grid-gutters(
+          $rules: (
+            "padding-right",
+            "padding-bottom"
+          ),
+          $negation: true
+        );
+      }
+      @include expect {
+        padding-right: -px-to-rem(8px);
+        padding-bottom: -px-to-rem(8px);
+        @media all and (min-width: 30em) {
+          padding-right: -px-to-rem(16px);
+          padding-bottom: -px-to-rem(16px);
+        }
+        @media all and (min-width: 48em) {
+          padding-right: -px-to-rem(24px);
+          padding-bottom: -px-to-rem(24px);
+        }
+        @media all and (min-width: 80em) {
+          padding-right: -px-to-rem(32px);
+          padding-bottom: -px-to-rem(32px);
+        }
+      }
+    }
+  }
+}
+
+@include describe("qnorr-grid()") {
+  @include it("Returns a grid container") {
+    @include assert {
+      @include output {
+        @include qnorr-grid();
+      }
+      @include expect {
+        position: relative;
+        display: flex;
+        flex: 0 1 auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-left: -px-to-rem(8px);
+        @media all and (min-width: 30em) {
+          margin-left: -px-to-rem(16px);
+        }
+        @media all and (min-width: 48em) {
+          margin-left: -px-to-rem(24px);
+        }
+        @media all and (min-width: 80em) {
+          margin-left: -px-to-rem(32px);
+        }
+      }
+    }
+  }
+  @include it("Returns a flushed grid container") {
+    @include assert {
+      @include output {
+        @include qnorr-grid($flush: true);
+      }
+      @include expect {
+        position: relative;
+        display: flex;
+        flex: 0 1 auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
+
+@include describe("qnorr-grid-column()") {
+  @include it("Returns a grid column") {
+    @include assert {
+      @include output {
+        @include qnorr-grid-column();
+      }
+      @include expect {
+        display: block;
+        position: relative;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: auto;
+        max-width: 100%;
+        padding-left: px-to-rem(8px);
+        @media all and (min-width: 30em) {
+          padding-left: px-to-rem(16px);
+        }
+        @media all and (min-width: 48em) {
+          padding-left: px-to-rem(24px);
+        }
+        @media all and (min-width: 80em) {
+          padding-left: px-to-rem(32px);
+        }
+      }
+    }
+  }
+  @include it("Returns a flushed grid column") {
+    @include assert {
+      @include output {
+        @include qnorr-grid-column($flush: true);
+      }
+      @include expect {
+        display: block;
+        position: relative;
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: auto;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+@include describe("qnorr-grid-column-span()") {
+  @include it("Returns side of a grid column") {
+    @include assert {
+      @include output {
+        @include qnorr-grid-column-span();
+      }
+      @include expect {
+        flex-grow: 1;
+        flex-shrink: 0;
+        flex-basis: auto;
+        max-width: 100%;
+      }
+    }
+  }
+  @include it("Returns side of a grid column of 3") {
+    @include assert {
+      @include output {
+        @include qnorr-grid-column-span($number-of-columns: 3);
+      }
+      @include expect {
+        flex: 0 0 25%;
+        width: 25%;
+        max-width: 25%;
+      }
+    }
+  }
+}

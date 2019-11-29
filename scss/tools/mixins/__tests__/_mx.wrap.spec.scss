@@ -1,0 +1,114 @@
+@import "true";
+@import "../../../settings/index";
+@import "node_modules/mappy-breakpoints/_mappy-breakpoints";
+@import "../_mx.grid";
+@import "../_mx.wrap";
+
+@include describe("qnorr-wrap()") {
+  @include it("Returns properties for wrapper element") {
+    @include assert {
+      @include output {
+        @include qnorr-wrap();
+      }
+      @include expect {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        padding-left: px-to-rem(8px);
+        padding-right: px-to-rem(8px);
+        @media all and (min-width: 37.5em) {
+          max-width: 600px;
+        }
+        @media all and (min-width: 48em) {
+          max-width: 720px;
+        }
+        @media all and (min-width: 62em) {
+          max-width: 85%;
+        }
+        @media all and (min-width: 64em) {
+          max-width: 100%;
+        }
+        @media all and (min-width: 80em) {
+          max-width: 1140px;
+        }
+        @media all and (min-width: 90em) {
+          max-width: 1280px;
+        }
+        @media all and (min-width: 103.125em) {
+          max-width: 1580px;
+        }
+        @media all and (min-width: 30em) {
+          padding-left: px-to-rem(16px);
+          padding-right: px-to-rem(16px);
+        }
+        @media all and (min-width: 48em) {
+          padding-left: px-to-rem(24px);
+          padding-right: px-to-rem(24px);
+        }
+        @media all and (min-width: 80em) {
+          padding-left: px-to-rem(32px);
+          padding-right: px-to-rem(32px);
+        }
+      }
+    }
+  }
+  @include it("Returns properties for flush wrapper element") {
+    @include assert {
+      @include output {
+        @include qnorr-wrap($flush: true);
+      }
+      @include expect {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        @media all and (min-width: 37.5em) {
+          max-width: 600px;
+        }
+        @media all and (min-width: 48em) {
+          max-width: 720px;
+        }
+        @media all and (min-width: 62em) {
+          max-width: 85%;
+        }
+        @media all and (min-width: 64em) {
+          max-width: 100%;
+        }
+        @media all and (min-width: 80em) {
+          max-width: 1140px;
+        }
+        @media all and (min-width: 90em) {
+          max-width: 1280px;
+        }
+        @media all and (min-width: 103.125em) {
+          max-width: 1580px;
+        }
+      }
+    }
+  }
+  @include it("Returns properties for fluid wrapper element") {
+    @include assert {
+      @include output {
+        @include qnorr-wrap($fluid: true);
+      }
+      @include expect {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        padding-left: px-to-rem(8px);
+        padding-right: px-to-rem(8px);
+        @media all and (min-width: 30em) {
+          padding-left: px-to-rem(16px);
+          padding-right: px-to-rem(16px);
+        }
+        @media all and (min-width: 48em) {
+          padding-left: px-to-rem(24px);
+          padding-right: px-to-rem(24px);
+        }
+        @media all and (min-width: 80em) {
+          padding-left: px-to-rem(32px);
+          padding-right: px-to-rem(32px);
+        }
+      }
+    }
+  }
+}

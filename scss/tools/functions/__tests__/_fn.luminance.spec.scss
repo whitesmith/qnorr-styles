@@ -1,0 +1,9 @@
+@import "true";
+@import "../_fn.pow";
+@import "../_fn.luminance";
+
+@include describe("luminance()") {
+  @include it("Returns luminance of color") {
+    @include assert-equal(luminance(#555), 0.04987, $inspect: true);
+  }
+}

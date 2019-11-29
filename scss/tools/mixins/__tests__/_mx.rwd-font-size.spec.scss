@@ -1,0 +1,62 @@
+@import "true";
+@import "../../../settings/index";
+@import "node_modules/mappy-breakpoints/_mappy-breakpoints";
+@import "../_mx.rwd-font-size";
+
+@include describe("make-font-size()") {
+  @include it("Returns a font-size") {
+    @include assert {
+      @include output {
+        @include make-font-size(10px);
+      }
+      @include expect {
+        font-size: px-to-rem(10px);
+      }
+    }
+  }
+  @include it("Returns font-size and line-height") {
+    @include assert {
+      @include output {
+        @include make-font-size((10px, 12px));
+      }
+      @include expect {
+        font-size: px-to-rem(10px);
+        line-height: decimal-ceil(1.2, 2);
+      }
+    }
+  }
+}
+
+@include describe("responsive-font-size()") {
+  @include it("Returns a font-size") {
+    @include assert {
+      @include output {
+        @include responsive-font-size(10px);
+      }
+      @include expect {
+        font-size: px-to-rem(10px);
+      }
+    }
+  }
+  @include it("Returns responsive font-size") {
+    @include assert {
+      @include output {
+        @include responsive-font-size(
+          (
+            "sm": 10px,
+            "md": 16px
+          )
+        );
+      }
+      @include expect {
+        @media all and (min-width: 48em) {
+          font-size: px-to-rem(10px);
+        }
+
+        @media all and (min-width: 62em) {
+          font-size: px-to-rem(16px);
+        }
+      }
+    }
+  }
+}

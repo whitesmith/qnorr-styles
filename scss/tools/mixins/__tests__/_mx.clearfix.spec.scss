@@ -1,0 +1,19 @@
+@import "true";
+@import "../_mx.clearfix";
+
+@include describe("clearfix()") {
+  @include it("Returns :after element") {
+    @include assert {
+      @include output {
+        @include clearfix();
+      }
+      @include expect {
+        &:after {
+          content: " ";
+          display: block;
+          clear: both;
+        }
+      }
+    }
+  }
+}

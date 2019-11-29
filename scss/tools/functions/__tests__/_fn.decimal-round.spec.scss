@@ -1,0 +1,40 @@
+@import "true";
+@import "../_fn.decimal-round";
+
+@include describe("decimal-round()") {
+  @include it("Returns the number rounded") {
+    @include assert-equal(decimal-round(0.333), 0);
+    @include assert-equal(decimal-round(0.666), 1);
+  }
+  @include it("Returns the number rounded to 1 case") {
+    @include assert-equal(decimal-round(0.333, 1), 0.3);
+    @include assert-equal(decimal-round(0.666, 1), 0.7);
+  }
+  @include it("Returns the number rounded to 2 cases") {
+    @include assert-equal(decimal-round(0.333, 2), 0.33);
+    @include assert-equal(decimal-round(0.666, 2), 0.67);
+  }
+
+  @include it("Returns the number rounded up") {
+    @include assert-equal(decimal-round(0.333, $mode: ceil), 1);
+  }
+
+  @include it("Returns the number rounded down") {
+    @include assert-equal(decimal-round(0.666, $mode: floor), 0);
+  }
+}
+
+@include describe("decimal-ceil()") {
+  @include it("Returns the number ceiled") {
+    @include assert-equal(decimal-ceil(0.333), 1);
+    @include assert-equal(decimal-ceil(0.666), 1);
+  }
+  @include it("Returns the number ceiled to 1 case") {
+    @include assert-equal(decimal-ceil(0.333, 1), 0.4);
+    @include assert-equal(decimal-ceil(0.666, 1), 0.7);
+  }
+  @include it("Returns the number ceiled to 2 cases") {
+    @include assert-equal(decimal-ceil(0.333, 2), 0.34);
+    @include assert-equal(decimal-ceil(0.666, 2), 0.67);
+  }
+}

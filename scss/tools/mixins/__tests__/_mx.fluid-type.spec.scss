@@ -1,0 +1,55 @@
+@import "true";
+@import "../../../settings/index";
+@import "node_modules/mappy-breakpoints/_mappy-breakpoints";
+@import "../_mx.fluid-type";
+
+@include describe("fluid-type()") {
+  @include it("Returns fluid typography properties") {
+    @include assert {
+      @include output {
+        @include fluid-type(24px, 56px, 480px, 1024px);
+      }
+      @include expect {
+        font-size: 24px;
+        @media all and (min-width: 30em) {
+          font-size: calc(24px + strip-unit(32px) * ((100vw - 480px) / strip-unit(544px)));
+        }
+        @media all and (min-width: 64em) {
+          font-size: 56px;
+        }
+      }
+    }
+  }
+  @include it("Accepts mappy breakpoints as params") {
+    @include assert {
+      @include output {
+        @include fluid-type(24px, 56px, 'sm', 'lg');
+      }
+      @include expect {
+        font-size: 24px;
+        @media all and (min-width: 48em) {
+          font-size: calc(24px + strip-unit(32px) * ((100vw - 768px) / strip-unit(512px)));
+        }
+        @media all and (min-width: 80em) {
+          font-size: 56px;
+        }
+      }
+    }
+  }
+  @include it("Accepts setting different property on optional parameter") {
+    @include assert {
+      @include output {
+        @include fluid-type(24px, 56px, 480px, 1024px, "line-height");
+      }
+      @include expect {
+        line-height: 24px;
+        @media all and (min-width: 30em) {
+          line-height: calc(24px + strip-unit(32px) * ((100vw - 480px) / strip-unit(544px)));
+        }
+        @media all and (min-width: 64em) {
+          line-height: 56px;
+        }
+      }
+    }
+  }
+}

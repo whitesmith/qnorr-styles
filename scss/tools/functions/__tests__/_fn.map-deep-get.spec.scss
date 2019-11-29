@@ -1,0 +1,15 @@
+@import "true";
+@import "../_fn.map-deep-get";
+
+@include describe("map-deep-get()") {
+  @include it("Returns value from map of maps") {
+    $map: (
+      a: (
+        b: (
+          c: 1
+        )
+      )
+    );
+    @include assert-equal(map-deep-get($map, a, b, c), 1);
+  }
+}

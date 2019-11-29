@@ -1,0 +1,26 @@
+@import "true";
+@import "../_mx.font-face";
+
+// TO BE DONE
+// Currently there is an error that prevents the mixin to run on the test env:
+// undefined:7:3: @font-face missing '}'
+
+/*
+@include describe("font-face()") {
+  @include it("Returns font-face declaration") {
+    @include assert {
+      @include output {
+        .font {
+          @include font-face($path: "fonts/your-web-font",$name: "Custom Font");
+        }
+      }
+      @include expect {
+        @font-face {
+          font-family: "name";
+          src: "";
+        }
+      }
+    }
+  }
+}
+*/
