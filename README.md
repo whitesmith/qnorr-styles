@@ -1,3 +1,23 @@
+
+<h1 align="center">
+qnorr
+</h1>
+
+<p align="center">
+A style agnostic sass seasoning framework to bootstrap your projects
+<br />
+<br />
+
+<a href="https://www.npmjs.com/package/@whitesmith/qnorr-styles">
+  <img src="https://img.shields.io/npm/v/@whitesmith/qnorr-styles?color=%23ffbc05&logo=asdad&style=for-the-badge" alt="npm version">
+</a>
+
+<img src="https://img.shields.io/github/license/whitesmith/qnorr-styles?style=for-the-badge" alt="license">
+
+</p>
+
+---
+
 ## Documentation
 
 > If it’s not documented, it doesn’t exist. Documentation should become the default – an integrated part of the development process.
@@ -12,10 +32,18 @@ Install via `npm` or `yarn`.
 yarn add @whitesmith/qnorr-styles
 ```
 
+Alternatively you can add the built version straight into you pages head
+
+```html
+<!-- replace x.x.x per your current version -->
+<link rel="stylesheet" href="https://unpkg.com/@whitesmith/qnorr-styles@x.x.x/dist/qnorr.min.css">
+``` 
+
 
 ## usage
+If you've installed the package as module then **at your `{main,index,app}.scss`** 
 
-**at your `{main,index,app}.scss`**
+
 ```scss
 @import "path/to/node_modules/@whitesmith/qnorr-styles/scss/qnorr";
 
