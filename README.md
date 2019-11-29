@@ -49,7 +49,6 @@ $qnorr-grid-columns-number: 10;
 // import settings to be overriden by the configuration above;
 @import "~@whitesmith/qnorr-styles/scss/settings";
 
-
 /////
 /// TOOLING
 ///
@@ -92,27 +91,34 @@ Note: read more about [sass module dependency import issues here](https://github
 
 
 
-## Developing
+## Contributing
 
 - We use [gulp@4.0^](https://gulpjs.com/) to build the framework.
 - We use [sassdoc](https://sassdoc.com/) to build and generate documentation `/docs` folder. Head to the site to learn how to use it, or just check any source file for an example, you'll get it super fast. A pretty custom theme is possible but let's leave it for version 2.
 - We use [parcel](https://parceljs.org/) and [posthtml plugins](https://github.com/posthtml/posthtml) to build a basic site located under `/site` folder so you can play around with the framework.
 
-Developing
+### Developing
 ```
 # watch mode for qnorr will also start a server for documentation
 yarn run start
 ```
 
-Production build
+### Production build 
 ```
 # optimized output for publishing
 yarn run qnorr:build
 ```
 
-Play at playground site
+### Play at playground site
 ```
 yarn run playground:dev
+```
+
+### Testing 
+We do have unit tests for sass 🤓functions and mixins (thanks @tomasmcm). If you add any, pleas write your tests!Also thanks to @oddbird's [true](https://github.com/oddbird/true) and [jest](https://github.com/facebook/jest) for the tools to make it happen.
+
+```
+yarn run test
 ```
 
 ## License
