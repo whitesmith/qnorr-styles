@@ -1,0 +1,13 @@
+@import "true";
+@import "../../../settings/index";
+@import "../_fn.strip-unit";
+@import "../_fn.px-to-rem";
+
+@include describe("px-to-rem()") {
+  @include it("Returns pixel converted into rem") {
+    @include assert-equal(px-to-rem(), 1rem);
+  }
+  @include it("Returns custom pixel converted into rem") {
+    @include assert-equal(px-to-rem(12px), 0.75rem);
+  }
+}

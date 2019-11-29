@@ -1,0 +1,8 @@
+@import "true";
+@import "../_fn.pow";
+
+@include describe("pow()") {
+  @include it("Returns value powered to exponent") {
+    @include assert-equal(pow(2, 2), 4);
+  }
+}

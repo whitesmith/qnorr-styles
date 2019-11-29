@@ -1,0 +1,8 @@
+@import "true";
+@import "../_fn.strip-unit";
+
+@include describe("strip-unit()") {
+  @include it("Returns number without unit") {
+    @include assert-equal(strip-unit(12.5px), 12.5);
+  }
+}

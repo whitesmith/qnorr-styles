@@ -1,0 +1,14 @@
+@import "true";
+@import "../../../settings/index";
+@import "../_fn.map-deep-get";
+@import "../_fn.get-color";
+
+@include describe("get-color()") {
+  @include it("Returns primary color") {
+    @include assert-equal(get-color('primary'), #0a5fc6);
+  }
+  @include it("Returns color from custom map") {
+    $color-map: (brand: #555);
+    @include assert-equal(get-color('brand', $map: $color-map), #555);
+  }
+}

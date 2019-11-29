@@ -1,0 +1,12 @@
+@import "true";
+@import "../../../settings/index";
+@import "../_fn.get-transition";
+
+@include describe("get-transition()") {
+  @include it("Returns default transition") {
+    @include assert-equal(get-transition(), cubic-bezier(0.1, 0.82, 0.25, 1));
+  }
+  @include it("Returns bounce transition") {
+    @include assert-equal(get-transition('bounce'), cubic-bezier(0.1, 0.82, 0.25, 1));
+  }
+}
